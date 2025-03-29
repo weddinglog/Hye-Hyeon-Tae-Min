@@ -65,20 +65,30 @@
             </div>
         </section>
 
-        <section class="wedding-info">
-            <div class="date-time">
-                달력
+        <section class="date-time">
+            <img src="./img/8Calendar.JPG" alt="달력">
+        </section>
+
+        <section class="gallery-wrapper">
+            <div class="gallery-header">
+                <h2>GALLERY</h2>
             </div>
+            <div class="gallery">
+                <img src="./img/wedding.jpg" alt="갤러리 이미지">
+                <img src="./img/wedding.jpg" alt="갤러리 이미지">
+                <img src="./img/wedding.jpg" alt="갤러리 이미지">
+                <img src="./img/wedding.jpg" alt="갤러리 이미지">
+                <img src="./img/wedding.jpg" alt="갤러리 이미지">
+                <img src="./img/wedding.jpg" alt="갤러리 이미지">
+            </div>
+        </section>
+
+        <section class="wedding-info">
             <div class="location">
                 <p>서울특별시 강남구 웨딩홀</p>
                 <p>3층 그랜드 볼룸</p>
                 <a href="#" class="map-link">오시는 길</a>
             </div>
-        </section>
-
-        <section class="gallery">
-            <img src="https://via.placeholder.com/300x300" alt="신랑 신부 사진 1">
-            <img src="https://via.placeholder.com/300x300" alt="신랑 신부 사진 2">
         </section>
 
         <section class="ww-section ww-rsvp-detail" id="map">
@@ -210,11 +220,10 @@
         font-size: 16px;
     }
 
-    .date-time {
-        font-size: 20px;
-        font-weight: bold;
-        color: #2c3e50;
-        margin: 20px 0;
+    .date-time img{
+        width: 100%;
+        height: auto;
+        margin-top: 30px;
     }
 
     .location {
@@ -234,18 +243,30 @@
         text-decoration: none;
         border-radius: 5px;
     }
+    
+    .gallery-wrapper {
+        padding: 20px;
+        background-color: #f8f8f8;
+    }
+
+    .gallery-header {
+        text-align: center;
+        font-size: 14px;
+        font-family: 'Noto Serif KR', serif;
+        font-weight: 300;
+        color: #131212;
+        margin-top: 20px;
+    }
 
     .gallery {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 20px 0;
+        padding: 20px;
     }
 
     .gallery img {
         width: 100%;
         height: auto;
-        border-radius: 5px;
     }
 
     .footer {
@@ -268,10 +289,6 @@
         
         .wedding-info p {
             font-size: 14px;
-        }
-        
-        .date-time {
-            font-size: 18px;
         }
     }
 
