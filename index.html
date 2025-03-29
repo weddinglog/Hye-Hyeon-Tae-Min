@@ -373,15 +373,15 @@
 
     /* 챕터 2 */
     .greeting-section {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;  /* 섹션 전체 높이 설정 */
+        /* min-height 제거 */
+        padding: 60px 0 0 0;
         text-align: center;
+        background-color: #fff;
     }
 
     .greeting-content {
-        flex: 1;  /* 남은 공간 차지 */
-        padding: 60px 20px;
+        /* flex 제거 */
+        padding: 0 20px;
         max-width: 600px;
         margin: 0 auto;
     }
@@ -436,7 +436,7 @@
     .greeting-image-wrapper {
         width: 100%;
         position: relative;
-        margin-top: auto;  /* 하단으로 밀기 */
+        margin-top: 60px;  /* 상단 여백 추가 */
     }
 
     .greeting-image-wrapper  img {
