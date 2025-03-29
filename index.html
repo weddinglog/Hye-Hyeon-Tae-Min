@@ -134,19 +134,20 @@
         justify-content: center;
         background-color: transparent;
         padding: 0px;
-        overflow: hidden;  /* 넘치는 내용 숨기기 */
+        position: relative;
+        overflow: hidden;  /* 추가 */
     }
 
     .header-content {
         text-align: center;
         width: 100%;
-        height: 100vh;  /* header와 같은 높이 설정 */
+        height: 100%;  /* 변경: 100vh -> 100% */
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        position: relative;
     }
     .names {
-        padding: 80px 0px 20px 0px;
+        padding: 40px 0px 20px 0px;
         margin-bottom: 0;
         font-family: 'Noto Serif KR', serif;
         font-weight: 300;
@@ -367,15 +368,6 @@
         }
     }
 
-    /* header-content의 z-index 추가 */
-    .header-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        width: 100%;
-    }
-
-
     /* 챕터 2 */
     .greeting-section {
         display: flex;
@@ -394,7 +386,7 @@
     .greeting-title {
         font-family: 'Noto Serif KR', serif;
         font-weight: 300;
-        font-size: 20px;
+        font-size: 24px;
         color: #9b9999;
         margin-bottom: 40px;
         letter-spacing: 5px;
@@ -403,7 +395,7 @@
     .greeting-text {
         font-family: 'Noto Serif KR', serif;
         font-weight: 300;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 2;
         color: #666;
         margin-bottom: 50px;
@@ -462,5 +454,29 @@
         width: 100%;
         background-color: #666;  /* 선 색상을 텍스트 색상과 맞춤 */
         opacity: 0.3;  /* 투명도 조정 */
+    }
+
+    @media (max-width: 768px) {
+        .greeting-image {
+            height: 300px;
+        }
+        
+        .image-line-overlay {
+            width: 80%;  /* 모바일에서 선 길이 조절 */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .greeting-title {
+            font-size: 20px;
+        }
+        
+        .greeting-text {
+            font-size: 14px;
+        }
+        
+        .parent-row {
+            font-size: 14px;
+        }
     }
 </style>
