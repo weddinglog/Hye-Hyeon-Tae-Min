@@ -34,11 +34,40 @@
                 </div>
             </div>
         </header>
+        <section class="greeting-section">
+            <div class="greeting-content">
+                <h2 class="greeting-title">결혼합니다</h2>
+                <div class="greeting-text">
+                    <p>새로운 마음과 새 의미를 간직하며</p>
+                    <p>저희 두 사람이 새 출발의 첫걸음을 내딛습니다.</p>
+                    <p>좋은 뜻, 바른 뜻으로 올바르게 살 수 있도록</p>
+                    <p>축복과 격려 주시면</p>
+                    <p>더없는 기쁨으로 간직하겠습니다.</p>
+                </div>
+                <div class="image-line-overlay">
+                    <span class="line"></span>
+                </div>
+                <div class="parents-info">
+                    <div class="parent-row">
+                        <span class="parent-title">이재용 · 김혜자</span>
+                        <span class="parent-desc">의 차남</span>
+                        <span class="parent-name">태민</span>
+                    </div>
+                    <div class="parent-row">
+                        <span class="parent-title">김기수 · 허미숙</span>
+                        <span class="parent-desc">의 장녀</span>
+                        <span class="parent-name">혜현</span>
+                    </div>
+                </div>
+            </div>
+            <div class="greeting-image-wrapper">
+                <img src="./img/wedding3.png" alt="웨딩 커플 이미지">
+            </div>
+        </section>
 
         <section class="wedding-info">
             <div class="date-time">
-                2024년 5월 1일 수요일<br>
-                오후 2시
+                달력
             </div>
             <div class="location">
                 <p>서울특별시 강남구 웨딩홀</p>
@@ -339,5 +368,118 @@
         z-index: 2;
         text-align: center;
         width: 100%;
+    }
+
+
+    /* 챕터 2 */
+    .greeting-section {
+        display: flex;
+        flex-direction: column;
+        min-height: 70vh;  /* 섹션 전체 높이 설정 */
+        text-align: center;
+    }
+
+    .greeting-content {
+        flex: 1;  /* 남은 공간 차지 */
+        padding: 60px 20px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .greeting-title {
+        font-family: 'Noto Serif KR', serif;
+        font-weight: 300;
+        font-size: 24px;
+        color: #9b9999;
+        margin-bottom: 40px;
+        letter-spacing: 5px;
+    }
+
+    .greeting-text {
+        font-family: 'Noto Serif KR', serif;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 2;
+        color: #666;
+        margin-bottom: 50px;
+    }
+
+    .greeting-text p {
+        margin: 10px 0;
+    }
+
+    .parents-info {
+        margin-top: 20px;
+        font-family: 'Noto Serif KR', serif;
+        font-weight: 300;
+    }
+
+    .parent-row {
+        margin: 15px 0;
+        font-size: 15px;
+        color: #333;
+    }
+
+    .parent-title {
+        letter-spacing: 1px;
+    }
+
+    .parent-desc {
+        color: #666;
+        margin: 0 10px;
+    }
+
+    .parent-name {
+        color: #333;
+    }
+
+    .greeting-image-wrapper {
+        width: 100%;
+        position: relative;
+        margin-top: auto;  /* 하단으로 밀기 */
+    }
+
+    .greeting-image-wrapper  img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .image-line-overlay {
+        width: 90%;
+        margin: 20px auto;  /* 위아래 여백 추가 */
+        position: relative;
+    }
+
+    .line {
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: #666;  /* 선 색상을 텍스트 색상과 맞춤 */
+        opacity: 0.3;  /* 투명도 조정 */
+    }
+
+    @media (max-width: 768px) {
+        .greeting-image {
+            height: 300px;
+        }
+        
+        .image-line-overlay {
+            width: 80%;  /* 모바일에서 선 길이 조절 */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .greeting-title {
+            font-size: 20px;
+        }
+        
+        .greeting-text {
+            font-size: 14px;
+        }
+        
+        .parent-row {
+            font-size: 14px;
+        }
     }
 </style>
