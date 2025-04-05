@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Crimson+Text&family=Libre+Baskerville&family=Playfair+Display&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 네이버 지도 API 스크립트 추가 (head 태그 안에) -->
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
 <body>
     <div class="template-app-wrapper">
@@ -85,17 +88,31 @@
                 <!-- 슬라이드 이미지 -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="gallery-row">
-                            <img src="./img/wedding2.jpg" alt="웨딩 이미지 1">
-                            <img src="./img/wedding2.jpg" alt="웨딩 이미지 2">
-                            <img src="./img/wedding2.jpg" alt="웨딩 이미지 3">
+                        <div class="gallery-grid">
+                            <div class="gallery-row">
+                                <img src="./img/wedding2.jpg" alt="웨딩 이미지 1">
+                                <img src="./img/wedding_img.png" alt="웨딩 이미지 2">
+                                <img src="./img/wedding2.jpg" alt="웨딩 이미지 3">
+                            </div>
+                            <div class="gallery-row">
+                                <img src="./img/wedding.jpg" alt="웨딩 이미지 4">
+                                <img src="./img/wedding_img.png" alt="웨딩 이미지 5">
+                                <img src="./img/wedding2.jpg" alt="웨딩 이미지 6">
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="gallery-row">
-                            <img src="./img/wedding2.jpg" alt="웨딩 이미지 4">
-                            <img src="./img/wedding2.jpg" alt="웨딩 이미지 5">
-                            <img src="./img/wedding2.jpg" alt="웨딩 이미지 6">
+                        <div class="gallery-grid">
+                            <div class="gallery-row">
+                                <img src="./img/wedding2.jpg" alt="웨딩 이미지 1">
+                                <img src="./img/wedding_img.png" alt="웨딩 이미지 2">
+                                <img src="./img/wedding2.jpg" alt="웨딩 이미지 3">
+                            </div>
+                            <div class="gallery-row">
+                                <img src="./img/wedding2.jpg" alt="웨딩 이미지 4">
+                                <img src="./img/wedding_img.png" alt="웨딩 이미지 5">
+                                <img src="./img/wedding2.jpg" alt="웨딩 이미지 6">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,37 +129,152 @@
             </div>
         </section>
 
-        <section class="wedding-info">
-            <div class="location">
-                <p>서울특별시 강남구 웨딩홀</p>
-                <p>3층 그랜드 볼룸</p>
-                <a href="#" class="map-link">오시는 길</a>
+        <section class="location-section">
+            <h2 class="section-title">LOCATION</h2>
+            <h3 class="sub-title">오시는 길</h3>
+            
+            <div class="venue-info">
+                <p class="venue-name">유성컨벤션웨딩홀 2층 모닝스타홀</p>
+                <p class="venue-address">대전광역시 유성구 온천북로77</p>
             </div>
+        
+            <div class="map-container">
+                <div id="map" style="width:100%;height:350px;"></div>
+            </div>
+            <div class="map-buttons">
+                <a href="#" class="map-button naver">
+                    <img src="./img/naver.png" alt="네이버 지도">
+                    네이버 지도
+                </a>
+                <a href="#" class="map-button kakao">
+                    <img src="./img/kakao.webp" alt="카카오 내비">
+                    카카오 내비
+                </a>
+                <a href="#" class="map-button tmap">
+                    <img src="./img/tmap.png" alt="티맵">
+                    티맵
+                </a>
+            </div>
+            
+            <div class="transport-details">
+                <div class="transport-item">
+                    <span class="transport-icon">🚇</span>
+                    <div class="transport-text">
+                        <h4>지하철</h4>
+                        <p>1호선 갑천역 3번 출구</p>
+                        <p>(돌다리 건너편)</p>
+                    </div>
+                </div>
+        
+                <div class="transport-item">
+                    <span class="transport-icon">🚌</span>
+                    <div class="transport-text">
+                        <h4>버스</h4>
+                        <p>시내버스: 102번, 108번, 706번, 106번, 113번 승차 시 홈플러스 유성점에서 하차</p>
+                    </div>
+                </div>
+        
+                <div class="transport-item">
+                    <span class="transport-icon">🚗</span>
+                    <div class="transport-text">
+                        <h4>자가용</h4>
+                        <p>유성IC → 홈플러스 유성점 → 갑천변 유성컨벤션웨딩홀 (약 3.7Km)</p>
+                    </div>
+                </div>
+
+                <div class="transport-item">
+                    <span class="transport-icon">🅿️</span>
+                    <div class="transport-text">
+                        <h4>주차</h4>
+                        <p>유성컨벤션웨딩홀 건물 주차장, 유성컨벤션 맞은 편 부지 공간 주차 가능<br>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="parking-notice">
+                <h4>주차안내</h4>
+                <div class="notice-content">
+                    <p>자가용 이용시 웨딩홀 주차장은<br>
+                    1시간 30분까지 무료 주차 가능합니다.</p>
+                    <p>이후 10분 초과시 500원씩 요금이 부과되니<br>
+                    이점 양해 부탁드립니다.</p>
+                </div>
+            </div>
+
         </section>
 
-        <section class="ww-section ww-rsvp-detail" id="map">
-            <div class="container">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="col text-center">
-                            <label style="font-family: 'Noto Serif KR', serif; font-size: 15px;">
-                                셔틀버스 - 센텀시티역 4번출구앞에서 15분 간격으로 운행
-                            </label>
-                        </div>
-                        <div class="my-3">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.297439052569!2d129.1238775160104!3d35.1741384652207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356892c2513ecf5d%3A0x7d362ece2091e2f8!2z7IS87YWA7IKs7J207Ja47Iqk7YyM7YGsIOy7qOuypOyFmO2ZgA!5e0!3m2!1sko!2skr!4v1554092125630!5m2!1sko!2skr" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-                        </div>
+        <section class="account-section">
+            <h2 class="section-title">마음 전하실 곳</h2>
+            <p class="section-subtitle">"신랑 & 신부에게 축하의 마음을 전해주세요"</p>
+        
+            <div class="account-buttons">
+                <button class="account-button" onclick="toggleAccounts('groom')">
+                    신랑측 계좌번호
+                </button>
+                <button class="account-button" onclick="toggleAccounts('bride')">
+                    신부측 계좌번호
+                </button>
+            </div>
+        </section>
+        <!-- 계좌이체 섹션 끝나는 부분에 구분선 추가 -->
+        <div class="section-divider"></div>
+
+        <section class="contact-section">
+            <div class="contact-list">
+                <div class="contact-item">
+                    <div class="contact-info">
+                        <span class="contact-label">신랑</span>
+                        <span class="contact-name">이태민</span>
+                    </div>
+                    <div class="contact-buttons">
+                        <a href="tel:신랑전화번호" class="contact-button call">
+                            <i class="bi bi-telephone-fill"></i>
+                        </a>
+                        <a href="sms:신랑전화번호" class="contact-button sms">
+                            <i class="bi bi-chat-fill"></i>
+                        </a>
+                    </div>
+                </div>
+        
+                <div class="contact-item">
+                    <div class="contact-info">
+                        <span class="contact-label">신부</span>
+                        <span class="contact-name">김혜현</span>
+                    </div>
+                    <div class="contact-buttons">
+                        <a href="tel:신부전화번호" class="contact-button call">
+                            <i class="bi bi-telephone-fill"></i>
+                        </a>
+                        <a href="sms:신부전화번호" class="contact-button sms">
+                            <i class="bi bi-chat-fill"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- 계좌이체 섹션 끝나는 부분에 구분선 추가 -->
+        <div class="section-divider"></div>
+
+        <!-- 공유 섹션 추가 -->
+        <section class="share-section">
+            <div class="share-buttons">
+                <a href="#" class="share-button kakao">
+                    <img src="./img/kakao2.png" alt="카카오톡 공유하기" class="share-icon">
+                    카카오톡 공유하기
+                </a>
+                <a href="#" class="share-button url">
+                    <img src="./img/link.png" alt="URL 주소 복사하기" class="share-icon">
+                    URL 주소 복사하기
+                </a>
+            </div>
+        </section>
+
+        <!-- 푸터 배경색 추가 -->
         <footer class="footer">
-            <p>신랑측 혼주 김00 · 이00</p>
-            <p>신부측 혼주 박00 · 최00</p>
-            <p>신랑 010-1234-5678</p>
-            <p>신부 010-8765-4321</p>
+            <!-- 기존 푸터 내용 -->
         </footer>
+
     </div>
 </body>
 </html>
@@ -285,19 +417,6 @@
         font-weight: 300;
         color: #131212;
         margin-top: 20px;
-    }
-
-    .footer {
-        text-align: center;
-        padding: 20px 0;
-        background-color: #f8f8f8;
-        margin-top: 30px;
-    }
-
-    .footer p {
-        margin: 5px 0;
-        font-size: 14px;
-        color: #666;
     }
 
     @media (max-width: 480px) {
@@ -515,33 +634,127 @@
         }
     }
 
+    /*웨딩 사진 슬라이드*/
     #weddingCarousel {
         max-width: 1200px;
         margin: 0 auto;
     }
+    .gallery-grid {
+        padding-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+    }
     .gallery-row {
-        position: absolute;
-        top: 120px;
         display: flex;
         justify-content: center;
         gap: 20px;
-        width: 100%;  /* 30%에서 100%로 변경 */
-        max-width: 1200px;  /* 최대 너비 설정 */
-        margin: 0 auto;  /* 가운데 정렬 */
+        width: 100%;
     }
 
     .gallery-row img {
-        width: calc(33%);  /* gap 고려하여 너비 계산 */
-        height: 300px;
+        width: calc(33.333% - 14px);
+        height: 250px;  /* 이미지 높이 고정 */
         object-fit: cover;
         transition: transform 0.3s ease;
     }
-
-    .gallery-row img:hover {
-        transform: scale(1.02);
+    /* 확대된 이미지를 위한 스타일 */
+    .image-expanded {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            135deg, 
+            rgba(253, 241, 242, 0.95) 0%,
+            rgba(247, 242, 243, 0.95) 50%,
+            rgba(255, 244, 245, 0.856) 100%
+        );
+        backdrop-filter: blur(8px);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
     }
 
-    /* 모바일 대응 */
+    .expanded-image-container {
+        position: relative;
+        max-width: 90%;
+        max-height: 90vh;
+    }
+    .expanded-image-container img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+    }
+
+    /* 애니메이션 추가 */
+    .expanded-image-container img {
+        animation: scaleIn 0.3s ease;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: rgb(77, 77, 77);
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 10px;
+    }
+
+    .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 20px;
+        z-index: 1001;
+    }
+
+    .prev-button {
+        left: 20px;
+    }
+
+    .next-button {
+        right: 20px;
+    }
+
+    .close-button:hover,
+    .nav-button:hover {
+        opacity: 0.8;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes scaleIn {
+        from {
+            transform: scale(0.95);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    /* 모바일 대응 */ 
     @media (max-width: 768px) {
         .gallery-row {
             gap: 10px;
@@ -561,11 +774,11 @@
 
     .carousel-item {
         position: relative;
-        height: 500px;  /* 이미지 높이 고정 */
+        height: 600px;  /* 이미지 높이 고정 */
     }
 
     .carousel-item img {
-        height: 100%;
+        height: 100px;
         object-fit: cover;
         object-position: center;
     }
@@ -586,9 +799,7 @@
     /* 이전/다음 버튼 스타일 커스텀 */
     .carousel-control-prev,
     .carousel-control-next {
-        width: 10%;
-        opacity: 0;
-        transition: opacity 0.3s ease;
+        display: none;
     }
 
     #weddingCarousel:hover .carousel-control-prev,
@@ -602,14 +813,605 @@
             height: 320px;
         }
     }
+
+    /* 위치 섹션 */
+    .location-section {
+        padding: 80px 20px 0px 20px;
+        background-color: #fff;
+        text-align: center;
+    }
+
+    .section-title {
+        font-family: 'Noto Serif KR', serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #a77979;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+    }
+
+    .sub-title {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 24px;
+        color: #745b5bcb;
+        margin-bottom: 40px;
+        font-weight: 300;
+    }
+
+    .venue-info {
+        margin-bottom: 30px;
+    }
+
+    .venue-name {
+        font-size: 18px;
+        color: #333;
+        font-family: 'Noto Serif KR', serif;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    .venue-address {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 16px;
+        color: #666;
+    }
+
+    .map-container {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        max-width: 600px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;  /* 세로 방향으로 배치 */
+    }
+
+    #map {
+        width: 100%;
+        height: 350px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .map-container {
+        background: #f8f8f8;  /* 배경색을 약간 회색으로 변경 */
+        border-radius: 12px;
+        overflow: hidden;
+        max-width: 600px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+    }
+
+    #map {
+        width: 100%;
+        height: 350px;
+    }
+
+    .map-buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 12px 0;  /* 상하 패딩만 적용 */
+        background: #f8f8f8;
+        box-sizing: border-box;
+        position: relative;  /* 구분선 위치 기준 */
+    }
+
+    .map-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        text-decoration: none;
+        color: #333;
+        font-size: 10px;
+        flex: 1;
+        text-align: center;
+        position: relative;  /* 구분선 위치 기준 */
+    }
+
+    /* 구분선 추가 */
+    .map-button:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 12px;  /* 구분선 높이 */
+        background-color: #ddd;
+    }
+
+    .map-button img {
+        width: 16px;  /* 이미지 크기 조정 */
+        height: 16px;
+        object-fit: contain;
+    }
+
+    /* 필터 모두 제거 */
+    .map-button.naver img,
+    .map-button.kakao img,
+    .map-button.tmap img {
+        filter: none;
+    }
+
+    .transport-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .transport-icon {
+        font-size: 24px;
+    }
+
+    .transport-text {
+        text-align: left;
+    }
+
+    .transport-text h4 {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .transport-text p {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .transport-details {
+        margin: 40px 0;
+    }
+
+    .transport-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
+    .transport-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+        margin-top: 3px;
+    }
+
+    .transport-text {
+        flex: 1;
+    }
+
+    .transport-text h4 {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    .transport-text p {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 5px;
+    }
+
+    .parking-notice {
+        background-color: #f8f8f8;
+        border-radius: 15px;
+        padding: 25px;
+        margin: 40px auto;
+        max-width: 500px;
+    }
+
+    .parking-notice h4 {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+
+    .notice-content {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .notice-content p {
+        margin-bottom: 15px;
+    }
+
+    .notice-content p:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+        .transport-item {
+            padding: 0 20px;
+        }
+        
+        .parking-notice {
+            margin: 30px 20px;
+            padding: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 18px;
+        }
+
+        .sub-title {
+            font-size: 20px;
+        }
+
+        .map-buttons {
+            flex-wrap: wrap;
+        }
+
+        .map-button {
+            width: calc(50% - 10px);
+        }
+    }
+
+    /* 계좌이체 섹션 */
+    .account-section {
+        padding: 60px 20px;
+        text-align: center;
+        background: #fff;
+    }
+
+    .section-title {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: 400;
+    }
+
+    .section-subtitle {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+
+    .account-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .account-button {
+        margin: 0 auto;
+        width: 90%;
+        padding: 15px;
+        border: none;
+        border-radius: 25px;
+        background-color: #f0f0f0;
+        color: #333;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        font-family: 'Noto Serif KR', serif;
+    }
+
+    .account-button:hover {
+        background-color: #e5e5e5;
+    }
+
+    @media (max-width: 768px) {
+        .account-section {
+            padding: 40px 15px;
+        }
+        
+        .account-buttons {
+            padding: 0 10px;
+        }
+    }
+
+    /* 연락처 섹션 */
+    .contact-section {
+        padding: 30px 50px;
+        background: #fff;
+    }
+
+    .contact-list {
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;  /* 간격 증가 */
+    }
+
+    .contact-item {
+        display: flex;
+        justify-content: flex-start;  /* 왼쪽 정렬로 변경 */
+        align-items: center;
+        padding: 5px 0;
+    }
+
+    .contact-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;  /* 간격 증가 */
+        flex: 1;  /* 남은 공간 차지 */
+    }
+
+    .contact-label {
+        font-family: 'Noto Serif KR', serif;
+        color: #999;  /* 색상 더 연하게 */
+        font-size: 15px;
+        min-width: 40px;
+    }
+
+    .contact-name {
+        font-family: 'Noto Serif KR', serif;
+        color: #333;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .contact-buttons {
+        display: flex;
+        gap: 20px;  /* 버튼 사이 간격 조정 */
+        margin-left: auto;  /* 오른쪽 정렬 */
+    }
+
+    .contact-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        text-decoration: none;
+    }
+
+    .contact-button i {
+        font-size: 20px;
+        color: #999;  /* 회색으로 변경 */
+    }
+
+    /* 공유 섹션 */
+    .section-divider {
+        width: 100%;
+        height: 1px;
+        background-color: #f1f1f1;
+        border: none;
+        margin: 10px auto;
+    }
+
+    .share-section {
+        padding: 20px;
+        background: #fff;
+        margin-bottom: 10px;
+    }
+
+    .share-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .share-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 10px;
+        text-decoration: none;
+        font-size: 11px;
+        border-radius: 20px;  /* 더 둥근 모서리 */
+        color: #333;
+    }
+
+    .share-button.kakao .share-icon {
+        width: 25px;
+        height: 25px;
+        padding: 2px;
+    }
+
+    .share-button.url .share-icon {
+        width: 18px;
+        height: 18px;
+        opacity: 0.7;
+    }
+
+    .share-icon {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
+        .share-buttons {
+            padding: 0 10px;
+        }
+    }
+    
+    .footer {
+        background-color: #f1f1f1;
+        padding: 25px;
+        text-align: center;
+    }
 </style>
-<!-- <script>
-// 자동 슬라이드 설정
-document.addEventListener('DOMContentLoaded', function() {
-    var myCarousel = new bootstrap.Carousel(document.getElementById('weddingCarousel'), {
-        interval: 4000,
-        wrap: true,      // 무한 반복
-        touch: true      // 터치/스와이프 가능
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryImages = document.querySelectorAll('.gallery-row img');
+        let currentImageIndex = 0;
+        
+        galleryImages.forEach((img, index) => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showExpandedImage(index);
+            });
+        });
+
+        function showExpandedImage(index) {
+            currentImageIndex = index;
+            
+            const expandedDiv = document.createElement('div');
+            expandedDiv.classList.add('image-expanded');
+            
+            // 이미지 컨테이너 추가
+            const imageContainer = document.createElement('div');
+            imageContainer.classList.add('expanded-image-container');
+            
+            // 닫기 버튼 추가
+            const closeButton = document.createElement('button');
+            closeButton.classList.add('close-button');
+            closeButton.innerHTML = '<i class="bi bi-x-lg"></i>';
+            
+            // 이미지 추가
+            const expandedImg = new Image();
+            expandedImg.src = galleryImages[currentImageIndex].src;
+            expandedImg.alt = galleryImages[currentImageIndex].alt;
+            
+            // 네비게이션 버튼 추가
+            const prevButton = document.createElement('button');
+            prevButton.classList.add('nav-button', 'prev-button');
+            prevButton.innerHTML = '<i class="bi bi-chevron-left"></i>';
+            
+            const nextButton = document.createElement('button');
+            nextButton.classList.add('nav-button', 'next-button');
+            nextButton.innerHTML = '<i class="bi bi-chevron-right"></i>';
+            
+            // 요소들 조립
+            imageContainer.appendChild(expandedImg);
+            expandedDiv.appendChild(closeButton);
+            expandedDiv.appendChild(prevButton);
+            expandedDiv.appendChild(nextButton);
+            expandedDiv.appendChild(imageContainer);
+            document.body.appendChild(expandedDiv);
+            
+            // 이벤트 리스너 추가
+            closeButton.addEventListener('click', () => {
+                document.body.removeChild(expandedDiv);
+            });
+            
+            prevButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+                expandedImg.src = galleryImages[currentImageIndex].src;
+            });
+            
+            nextButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                expandedImg.src = galleryImages[currentImageIndex].src;
+            });
+            
+            // 스와이프 기능 추가
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            expandedDiv.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+            });
+            
+            expandedDiv.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].clientX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const swipeDistance = touchEndX - touchStartX;
+                if (Math.abs(swipeDistance) > 50) {
+                    if (swipeDistance > 0) {
+                        // 오른쪽으로 스와이프 - 이전 이미지
+                        prevButton.click();
+                    } else {
+                        // 왼쪽으로 스와이프 - 다음 이미지
+                        nextButton.click();
+                    }
+                }
+            }
+        }
     });
-});
-</script> -->
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mapOptions = {
+            center: new naver.maps.LatLng(35.8851676, 128.6499271), // M스타하우스 좌표
+            zoom: 17,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: naver.maps.Position.TOP_RIGHT
+            }
+        };
+    
+        const map = new naver.maps.Map('map', mapOptions);
+        
+        // 마커 추가
+        const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(35.8851676, 128.6499271),
+            map: map
+        });
+    
+        // 정보창 추가
+        const infoWindow = new naver.maps.InfoWindow({
+            content: '<div style="padding:10px;min-width:200px;line-height:150%;">' +
+                    '<h4 style="margin-top:5px;">M스타하우스</h4>' +
+                    '<p>대구 동구 동촌로 316</p>' +
+                    '</div>'
+        });
+    
+        // 마커 클릭시 정보창 표시
+        naver.maps.Event.addListener(marker, "click", function(e) {
+            if (infoWindow.getMap()) {
+                infoWindow.close();
+            } else {
+                infoWindow.open(map, marker);
+            }
+        });
+    
+        // 지도 버튼 링크 설정
+        document.querySelector('.map-button.naver').href = 
+            'https://map.naver.com/v5/search/M스타하우스/place/1234567890';
+        document.querySelector('.map-button.kakao').href = 
+            'https://map.kakao.com/link/to/M스타하우스,35.8851676,128.6499271';
+        document.querySelector('.map-button.tmap').href = 
+            'https://apis.openapi.sk.com/tmap/app/routes?name=M스타하우스&lon=128.6499271&lat=35.8851676';
+    });
+    </script>
+    <script>
+    document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const accountNumber = this.closest('.account-item')
+                .querySelector('.account-number').textContent;
+            navigator.clipboard.writeText(accountNumber)
+                .then(() => {
+                    this.textContent = '복사됨';
+                    setTimeout(() => {
+                        this.textContent = '복사';
+                    }, 1500);
+                });
+        });
+    });
+    
+    document.querySelectorAll('.account-header').forEach(header => {
+        header.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector('.toggle-icon');
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            icon.style.transform = content.style.display === 'none' ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+    });
+    // URL 복사 버튼 기능
+    document.querySelector('.share-button.url').addEventListener('click', function(e) {
+        e.preventDefault();
+        navigator.clipboard.writeText(window.location.href)
+            .then(() => {
+                alert('URL이 복사되었습니다.');
+            });
+    });
+    </script>
