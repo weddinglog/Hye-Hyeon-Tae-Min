@@ -1651,7 +1651,7 @@
         const container = document.querySelector('.petals-container');
         const numberOfPetals = 25;
 
-        function createPetal() {
+        function createPetal(isInitial = false) {
             const petal = document.createElement('div');
             petal.className = 'petal';
             
@@ -1660,7 +1660,13 @@
             petal.style.height = `${size}px`;
             
             petal.style.left = `${Math.random() * 120 - 10}%`;
-            petal.style.top = '-20px';
+            
+            // 초기 꽃잎은 화면 중간에서 시작
+            if (isInitial) {
+                petal.style.top = `${Math.random() * 20 + 20}%`; // 화면 20-40% 위치에서 시작
+            } else {
+                petal.style.top = '-20px';
+            }
 
             const colors = [
                 '#ffd1dc',
@@ -1731,11 +1737,20 @@
         }
 
         function startPetals() {
-            for (let i = 0; i < numberOfPetals; i++) {
+            // 초기 꽃잎 10개를 화면 중간에서 시작
+            for (let i = 0; i < 10; i++) {
+                const petal = createPetal(true);
+                setTimeout(() => {
+                    animatePetal(petal);
+                }, i * 200);
+            }
+
+            // 나머지 꽃잎들은 중간 꽃잎이 떨어지기 시작할 때 이어서 생성
+            for (let i = 10; i < numberOfPetals; i++) {
                 setTimeout(() => {
                     const petal = createPetal();
                     animatePetal(petal);
-                }, i * 300 + Math.random() * 300);  // 초기 생성 간격 조정
+                }, i * 200 + Math.random() * 200);  // 생성 간격을 200ms로 조정
             }
         }
 
