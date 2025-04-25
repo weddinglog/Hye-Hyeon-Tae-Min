@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- 네이버 지도 API 스크립트 추가 (head 태그 안에) -->
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
+    <script src="//oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=wiw1jo4r9j"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
@@ -34,7 +34,7 @@
             </div>
         </header>
         <section class="greeting-section fade-in-section">
-            <div class="greeting-content">
+            <div class="greeting-content fade-in-section">
                 <h2 class="greeting-title">결혼합니다</h2>
                 <div class="greeting-text">
                     <p>새로운 마음과 새 의미를 간직하며</p>
@@ -133,20 +133,6 @@
             <div class="map-container">
                 <div id="map" style="width:100%;height:350px;"></div>
             </div>
-            <div class="map-buttons">
-                <a href="#" class="map-button naver">
-                    <img src="./img/naver.png" alt="네이버 지도">
-                    네이버 지도
-                </a>
-                <a href="#" class="map-button kakao">
-                    <img src="./img/kakao.webp" alt="카카오 내비">
-                    카카오 내비
-                </a>
-                <a href="#" class="map-button tmap">
-                    <img src="./img/tmap.png" alt="티맵">
-                    티맵
-                </a>
-            </div>
             
             <div class="transport-details fade-in-section">
                 <div class="transport-item">
@@ -198,9 +184,9 @@
             </div>
         </section>
         <!-- 계좌이체 섹션 끝나는 부분에 구분선 추가 -->
-        <div class="section-divider"></div>
+        <div class="section-divider fade-in-section"></div>
 
-        <section class="contact-section">
+        <section class="contact-section fade-in-section">
             <div class="contact-list">
                 <div class="contact-item">
                     <div class="contact-info">
@@ -235,10 +221,10 @@
         </section>
 
         <!-- 계좌이체 섹션 끝나는 부분에 구분선 추가 -->
-        <div class="section-divider"></div>
+        <div class="section-divider fade-in-section"></div>
 
         <!-- 공유 섹션 추가 -->
-        <section class="share-section">
+        <section class="share-section fade-in-section">
             <div class="share-buttons">
                 <a href="#" class="share-button kakao">
                     <img src="./img/kakao2.png" alt="카카오톡 공유하기" class="share-icon">
@@ -260,26 +246,16 @@
     <div class="music-controls">
         <div class="music-controls-container">
             <button id="play-music" class="music-btn">
-                <svg width="22px" height="22px" fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.09 44.09">
-                    <g>
-                        <path class="cls-1" d="m14.35,22.04v-8.98c0-1.8,1.95-2.92,3.51-2.02l7.77,4.49,7.77,4.49c1.56.9,1.56,3.15,0,4.05l-7.77,4.49-7.77,4.49c-1.56.9-3.51-.23-3.51-2.02v-8.98Z"></path>
-                        <path class="cls-1" d="m22.04,44.09C9.89,44.09,0,34.2,0,22.04S9.89,0,22.04,0s22.04,9.89,22.04,22.04-9.89,22.04-22.04,22.04Zm0-39.93C12.18,4.16,4.16,12.18,4.16,22.04s8.02,17.89,17.89,17.89,17.89-8.02,17.89-17.89S31.91,4.16,22.04,4.16Z"></path>
-                    </g>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448.075 448.075" xml:space="preserve" width="18px" height="18px">
+                    <path d="M352.021,16.075c0-6.08-3.52-11.84-8.96-14.4c-5.76-2.88-12.16-1.92-16.96,1.92l-141.76,112.96l167.68,167.68V16.075z"></path>
+                    <path d="M443.349,420.747l-416-416c-6.24-6.24-16.384-6.24-22.624,0s-6.24,16.384,0,22.624l100.672,100.704h-9.376 c-9.92,0-18.56,4.48-24.32,11.52c-4.8,5.44-7.68,12.8-7.68,20.48v128c0,17.6,14.4,32,32,32h74.24l155.84,124.48 c2.88,2.24,6.4,3.52,9.92,3.52c2.24,0,4.8-0.64,7.04-1.6c5.44-2.56,8.96-8.32,8.96-14.4v-57.376l68.672,68.672 c3.136,3.136,7.232,4.704,11.328,4.704s8.192-1.568,11.328-4.672C449.589,437.131,449.589,427.019,443.349,420.747z"></path>
                 </svg>
             </button>
             <button id="pause-music" class="music-btn">
-                <svg width="22px" height="22px" fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.09 44.09">
-                    <g>
-                        <g>
-                            <rect class="cls-1" x="15.33" y="10.16" width="4.01" height="25.11" rx=".8" ry=".8"></rect>
-                            <path class="cls-1" d="m17.34,35.9c-1.45,0-2.63-1.18-2.63-2.63V12.17c0-1.45,1.18-2.63,2.63-2.63s2.63,1.18,2.63,2.63v21.1c0,1.45-1.18,2.63-2.63,2.63Zm0-25.11c-.76,0-1.38.62-1.38,1.38v21.1c0,.76.62,1.38,1.38,1.38s1.38-.62,1.38-1.38V12.17c0-.76-.62-1.38-1.38-1.38Z"></path>
-                        </g>
-                        <g>
-                            <rect class="cls-1" x="24.49" y="10.16" width="4.01" height="25.11" rx=".8" ry=".8"></rect>
-                            <path class="cls-1" d="m26.5,35.9c-1.45,0-2.63-1.18-2.63-2.63V12.17c0-1.45,1.18-2.63,2.63-2.63s2.63,1.18,2.63,2.63v21.1c0,1.45-1.18,2.63-2.63,2.63Zm0-25.11c-.76,0-1.38.62-1.38,1.38v21.1c0,.76.62,1.38,1.38,1.38s1.38-.62,1.38-1.38V12.17c0-.76-.62-1.38-1.38-1.38Z"></path>
-                        </g>
-                        <path class="cls-1" d="m22.04,44.09C9.89,44.09,0,34.2,0,22.04S9.89,0,22.04,0s22.04,9.89,22.04,22.04-9.89,22.04-22.04,22.04Zm0-39.93C12.18,4.16,4.16,12.18,4.16,22.04s8.02,17.89,17.89,17.89,17.89-8.02,17.89-17.89S31.91,4.16,22.04,4.16Z"></path>
-                    </g>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 480 480" xml:space="preserve" width="18px" height="18px">
+                    <path d="M278.944,17.577c-5.568-2.656-12.128-1.952-16.928,1.92L106.368,144.009H32c-17.632,0-32,14.368-32,32v128 c0,17.664,14.368,32,32,32h74.368l155.616,124.512c2.912,2.304,6.464,3.488,10.016,3.488c2.368,0,4.736-0.544,6.944-1.6 c5.536-2.656,9.056-8.256,9.056-14.4v-416C288,25.865,284.48,20.265,278.944,17.577z"></path>
+                    <path d="M368.992,126.857c-6.304-6.208-16.416-6.112-22.624,0.128c-6.208,6.304-6.144,16.416,0.128,22.656 C370.688,173.513,384,205.609,384,240.009s-13.312,66.496-37.504,90.368c-6.272,6.176-6.336,16.32-0.128,22.624 c3.136,3.168,7.264,4.736,11.36,4.736c4.064,0,8.128-1.536,11.264-4.64C399.328,323.241,416,283.049,416,240.009 S399.328,156.777,368.992,126.857z"></path>
+                    <path d="M414.144,81.769c-6.304-6.24-16.416-6.176-22.656,0.096c-6.208,6.272-6.144,16.416,0.096,22.624 C427.968,140.553,448,188.681,448,240.009s-20.032,99.424-56.416,135.488c-6.24,6.24-6.304,16.384-0.096,22.656 c3.168,3.136,7.264,4.704,11.36,4.704c4.064,0,8.16-1.536,11.296-4.64C456.64,356.137,480,299.945,480,240.009 S456.64,123.881,414.144,81.769z"></path>
                 </svg>
             </button>
         </div>
@@ -487,7 +463,7 @@
 
     .greeting-content {
         flex: 1;  /* 남은 공간 차지 */
-        padding: 140px 20px 80px 20px;
+        padding: 100px 20px 80px 20px;
         max-width: 600px;
         margin: 0 auto;
     }
@@ -773,7 +749,7 @@
 
     /* 위치 섹션 */
     .location-section {
-        padding: 140px 20px 30px 20px;
+        padding: 100px 20px 30px 20px;
         background-color: #fff;
         text-align: center;
     }
@@ -842,54 +818,6 @@
     #map {
         width: 100%;
         height: 350px;
-    }
-
-    .map-buttons {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        padding: 12px 0;  /* 상하 패딩만 적용 */
-        background: #f8f8f8;
-        box-sizing: border-box;
-        position: relative;  /* 구분선 위치 기준 */
-    }
-
-    .map-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        text-decoration: none;
-        color: #333;
-        font-size: 10px;
-        flex: 1;
-        text-align: center;
-        position: relative;  /* 구분선 위치 기준 */
-    }
-
-    /* 구분선 추가 */
-    .map-button:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 1px;
-        height: 12px;  /* 구분선 높이 */
-        background-color: #ddd;
-    }
-
-    .map-button img {
-        width: 16px;  /* 이미지 크기 조정 */
-        height: 16px;
-        object-fit: contain;
-    }
-
-    /* 필터 모두 제거 */
-    .map-button.naver img,
-    .map-button.kakao img,
-    .map-button.tmap img {
-        filter: none;
     }
 
     .transport-item {
@@ -986,19 +914,11 @@
         .sub-title {
             font-size: 20px;
         }
-
-        .map-buttons {
-            flex-wrap: wrap;
-        }
-
-        .map-button {
-            width: calc(50% - 10px);
-        }
     }
 
     /* 계좌이체 섹션 */
     .account-section {
-        padding: 50px 20px 40px 20px;
+        padding: 40px 20px 40px 20px;
         text-align: center;
         background: #fff;
     }
@@ -1173,10 +1093,9 @@
     /* 애니메이션 관련 CSS 추가 */
     .fade-in-section {
         opacity: 0;
-        transform: translateY(35px);
+        transform: translateY(30px);
         visibility: hidden;
-        transition: opacity 1.5s cubic-bezier(0.33, 1, 0.68, 1),
-                   transform 1.5s cubic-bezier(0.33, 1, 0.68, 1);
+        transition: all 1s ease-out;
         will-change: opacity, visibility, transform;
     }
 
@@ -1188,21 +1107,20 @@
 
     /* 각 섹션별로 딜레이를 다르게 주고 싶다면 */
     .fade-in-section:nth-child(2) {
-        transition-delay: 0.4s;
+        transition-delay: 0.2s;
     }
     .fade-in-section:nth-child(3) {
-        transition-delay: 0.8s;
+        transition-delay: 0.3s;
     }
     .fade-in-section:nth-child(4) {
-        transition-delay: 1.2s;
+        transition-delay: 0.4s;
     }
 
     /* 스크롤 다운 시 애니메이션 효과 */
     .fade-in-section.fade-out {
         opacity: 0;
-        transform: translateY(-25px);
-        transition: opacity 1s cubic-bezier(0.33, 1, 0.68, 1),
-                   transform 1s cubic-bezier(0.33, 1, 0.68, 1);
+        transform: translateY(-20px);
+        transition: all 0.8s ease-out;
     }
 
     .music-controls {
@@ -1232,8 +1150,16 @@
         transition: opacity 0.3s ease;
     }
 
+    .music-btn svg {
+        fill: #666;
+    }
+
     .music-btn:hover {
         opacity: 1;
+    }
+
+    .music-btn:hover svg {
+        fill: #333;
     }
 
     #pause-music {
@@ -1338,7 +1264,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const mapOptions = {
-            center: new naver.maps.LatLng(35.8851676, 128.6499271), // M스타하우스 좌표
+            center: new naver.maps.LatLng(36.3705, 127.3456), // 유성컨벤션웨딩홀 좌표
             zoom: 17,
             zoomControl: true,
             zoomControlOptions: {
@@ -1350,15 +1276,15 @@
         
         // 마커 추가
         const marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(35.8851676, 128.6499271),
+            position: new naver.maps.LatLng(36.3705, 127.3456),
             map: map
         });
     
         // 정보창 추가
         const infoWindow = new naver.maps.InfoWindow({
             content: '<div style="padding:10px;min-width:200px;line-height:150%;">' +
-                    '<h4 style="margin-top:5px;">M스타하우스</h4>' +
-                    '<p>대구 동구 동촌로 316</p>' +
+                    '<h4 style="margin-top:5px;">유성컨벤션웨딩홀 3층 그랜드홀</h4>' +
+                    '<p>대전광역시 유성구 온천북로77</p>' +
                     '</div>'
         });
     
@@ -1370,14 +1296,6 @@
                 infoWindow.open(map, marker);
             }
         });
-    
-        // 지도 버튼 링크 설정
-        document.querySelector('.map-button.naver').href = 
-            'https://map.naver.com/v5/search/M스타하우스/place/1234567890';
-        document.querySelector('.map-button.kakao').href = 
-            'https://map.kakao.com/link/to/M스타하우스,35.8851676,128.6499271';
-        document.querySelector('.map-button.tmap').href = 
-            'https://apis.openapi.sk.com/tmap/app/routes?name=M스타하우스&lon=128.6499271&lat=35.8851676';
     });
     </script>
     <script>
