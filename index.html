@@ -1173,10 +1173,10 @@
     /* 애니메이션 관련 CSS 추가 */
     .fade-in-section {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(35px);
         visibility: hidden;
-        transition: opacity 2s cubic-bezier(0.33, 1, 0.68, 1),
-                   transform 2.5s cubic-bezier(0.33, 1, 0.68, 1);
+        transition: opacity 1.5s cubic-bezier(0.33, 1, 0.68, 1),
+                   transform 1.5s cubic-bezier(0.33, 1, 0.68, 1);
         will-change: opacity, visibility, transform;
     }
 
@@ -1188,21 +1188,21 @@
 
     /* 각 섹션별로 딜레이를 다르게 주고 싶다면 */
     .fade-in-section:nth-child(2) {
-        transition-delay: 0.5s;
+        transition-delay: 0.4s;
     }
     .fade-in-section:nth-child(3) {
-        transition-delay: 1s;
+        transition-delay: 0.8s;
     }
     .fade-in-section:nth-child(4) {
-        transition-delay: 1.5s;
+        transition-delay: 1.2s;
     }
 
     /* 스크롤 다운 시 애니메이션 효과 */
     .fade-in-section.fade-out {
         opacity: 0;
-        transform: translateY(-30px);
-        transition: opacity 1.5s cubic-bezier(0.33, 1, 0.68, 1),
-                   transform 2s cubic-bezier(0.33, 1, 0.68, 1);
+        transform: translateY(-25px);
+        transition: opacity 1s cubic-bezier(0.33, 1, 0.68, 1),
+                   transform 1s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
     .music-controls {
@@ -1416,7 +1416,7 @@
         const observerOptions = {
             root: null,
             rootMargin: "0px",
-            threshold: 0.1
+            threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
         };
 
         const observer = new IntersectionObserver(function(entries, observer) {
