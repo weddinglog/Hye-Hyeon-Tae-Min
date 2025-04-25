@@ -11,11 +11,15 @@
     <!-- 네이버 지도 API 스크립트 추가 (head 태그 안에) -->
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
     <div class="template-app-wrapper">
         <header class="header">
-            <div class="leaves">
+            <div class="petals-container"></div>
+            <div class="header-content">
+            <!-- <div class="leaves">
                 <i></i>
                 <i></i>
                 <i></i>
@@ -26,7 +30,7 @@
                 <i></i>
                 <i></i>
                 <i></i>
-            </div>
+            </div> -->
             <div class="header-content">
                 <div class="names">
                     <div class="name-row">Lee Tae Min</div>
@@ -41,7 +45,7 @@
                 </div>
             </div>
         </header>
-        <section class="greeting-section">
+        <section class="greeting-section fade-in-section">
             <div class="greeting-content">
                 <h2 class="greeting-title">결혼합니다</h2>
                 <div class="greeting-text">
@@ -57,12 +61,12 @@
                 <div class="parents-info">
                     <div class="parent-row">
                         <span class="parent-title">이재용 · 김혜자</span>
-                        <span class="parent-desc">의 차남</span>
+                        <span class="parent-desc">의 </span>차남
                         <span class="parent-name">태민</span>
                     </div>
                     <div class="parent-row">
                         <span class="parent-title">김기수 · 허미숙</span>
-                        <span class="parent-desc">의 장녀</span>
+                        <span class="parent-desc">의 </span>장녀
                         <span class="parent-name">혜현</span>
                     </div>
                 </div>
@@ -72,11 +76,11 @@
             </div>
         </section>
 
-        <section class="date-time">
+        <section class="date-time fade-in-section">
             <img src="./img/8Calendar.JPG" alt="달력">
         </section>
 
-        <section class="gallery-section">
+        <section class="gallery-section fade-in-section">
             <div class="gallery-header"><h2>GALLERY</h2></div>
             <div id="weddingCarousel" class="carousel slide gallery" data-bs-ride="carousel">
                 <!-- 인디케이터 -->
@@ -129,7 +133,7 @@
             </div>
         </section>
 
-        <section class="location-section">
+        <section class="location-section fade-in-section">
             <h2 class="section-title">LOCATION</h2>
             <h3 class="sub-title">오시는 길</h3>
             
@@ -156,7 +160,7 @@
                 </a>
             </div>
             
-            <div class="transport-details">
+            <div class="transport-details fade-in-section">
                 <div class="transport-item">
                     <span class="transport-icon">🚇</span>
                     <div class="transport-text">
@@ -191,7 +195,7 @@
                 </div>
             </div>
         
-            <div class="parking-notice">
+            <div class="parking-notice fade-in-section">
                 <h4>주차안내</h4>
                 <div class="notice-content">
                     <p>자가용 이용시 웨딩홀 주차장은<br>
@@ -200,10 +204,9 @@
                     이점 양해 부탁드립니다.</p>
                 </div>
             </div>
-
         </section>
 
-        <section class="account-section">
+        <section class="account-section fade-in-section">
             <h2 class="section-title">마음 전하실 곳</h2>
             <p class="section-subtitle">"신랑 & 신부에게 축하의 마음을 전해주세요"</p>
         
@@ -219,7 +222,7 @@
         <!-- 계좌이체 섹션 끝나는 부분에 구분선 추가 -->
         <div class="section-divider"></div>
 
-        <section class="contact-section">
+        <section class="contact-section fade-in-section">
             <div class="contact-list">
                 <div class="contact-item">
                     <div class="contact-info">
@@ -227,10 +230,10 @@
                         <span class="contact-name">이태민</span>
                     </div>
                     <div class="contact-buttons">
-                        <a href="tel:신랑전화번호" class="contact-button call">
+                        <a href="tel:01044201467" class="contact-button call">
                             <i class="bi bi-telephone-fill"></i>
                         </a>
-                        <a href="sms:신랑전화번호" class="contact-button sms">
+                        <a href="sms:01044201467" class="contact-button sms">
                             <i class="bi bi-chat-fill"></i>
                         </a>
                     </div>
@@ -242,10 +245,10 @@
                         <span class="contact-name">김혜현</span>
                     </div>
                     <div class="contact-buttons">
-                        <a href="tel:신부전화번호" class="contact-button call">
+                        <a href="tel:01044201467" class="contact-button call">
                             <i class="bi bi-telephone-fill"></i>
                         </a>
-                        <a href="sms:신부전화번호" class="contact-button sms">
+                        <a href="sms:01044201467" class="contact-button sms">
                             <i class="bi bi-chat-fill"></i>
                         </a>
                     </div>
@@ -293,7 +296,8 @@
     }
 
     .template-app-wrapper {
-        margin: 0;
+        margin: auto;
+        width: 360px;
         padding: 0;
         box-sizing: border-box;
     }
@@ -358,6 +362,7 @@
         line-height: 1.8;
         font-family: 'Noto Serif KR', serif;
         font-weight: 300;  /* light 굵기 */
+        margin-bottom: 50px;
     }
 
     .wedding-date {
@@ -381,10 +386,24 @@
         font-size: 16px;
     }
 
-    .date-time img{
+    .date-time img {
         width: 100%;
         height: auto;
-        margin-top: 30px;
+        max-width: 100%;
+        object-fit: contain;  /* 이미지 비율 유지 */
+        image-rendering: -webkit-optimize-contrast;  /* 웹킷 브라우저에서 선명도 향상 */
+        image-rendering: crisp-edges;  /* 이미지 선명도 향상 */
+        transform: translateZ(0);  /* 하드웨어 가속 활성화 */
+        backface-visibility: hidden;  /* 렌더링 품질 향상 */
+        -webkit-font-smoothing: antialiased;  /* 텍스트 선명도 향상 */
+        filter: brightness(1.02) contrast(1.02);  /* 약간의 밝기와 대비 증가 */
+    }
+
+    /* 이미지 컨테이너에 배경색 추가하여 대비 향상 */
+    .date-time {
+        background-color: #ffffff;  /* 순수한 흰색 배경 */
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);  /* 섹션에 미세한 그림자 추가 */
     }
 
     .location {
@@ -430,8 +449,29 @@
     }
 
 
+    /* 꽃잎 스타일 */
+    .petals-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    .petal {
+        position: absolute;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffadf1' d='M12,1C8.1,1,5,4.1,5,8c0,2.4,1.2,4.5,3,5.7V15c0,2.2,1.8,4,4,4s4-1.8,4-4v-1.3c1.8-1.3,3-3.4,3-5.7 C19,4.1,15.9,1,12,1z'/%3E%3C/svg%3E");
+        width: 15px;
+        height: 15px;
+        opacity: 0.3;
+        filter: blur(0.3px);  /* 약간의 블러 효과 추가 */
+        will-change: transform;  /* 성능 최적화 */
+    }
+
+
     /* CSS 추가 */
-    .leaves {
+    /* .leaves {
         position: absolute;
         width: 100%;
         height: 100vh;
@@ -521,7 +561,7 @@
             transform: translateY(100vh) rotate(360deg);
             opacity: 0;
         }
-    }
+    } */
 
     /* 챕터 2 */
     .greeting-section {
@@ -532,7 +572,7 @@
 
     .greeting-content {
         flex: 1;  /* 남은 공간 차지 */
-        padding: 100px 20px;
+        padding: 80px 20px;
         max-width: 600px;
         margin: 0 auto;
     }
@@ -563,6 +603,7 @@
         margin-top: 20px;
         font-family: 'Noto Serif KR', serif;
         font-weight: 300;
+        margin-bottom: 30px;
     }
 
     .parent-row {
@@ -577,10 +618,11 @@
 
     .parent-desc {
         color: #666;
-        margin: 0 10px;
+        margin: 0px 10px 0px 2px;
     }
 
     .parent-name {
+        margin-left: 5px;
         color: #333;
     }
 
@@ -816,7 +858,7 @@
 
     /* 위치 섹션 */
     .location-section {
-        padding: 80px 20px 0px 20px;
+        padding: 100px 20px 30px 20px;
         background-color: #fff;
         text-align: center;
     }
@@ -1242,6 +1284,33 @@
         padding: 25px;
         text-align: center;
     }
+
+    /* 애니메이션 관련 CSS 추가 */
+    .fade-in-section {
+        opacity: 0;
+        transform: translateY(30px);  /* 더 멀리서 시작 */
+        visibility: hidden;
+        transition: opacity 0.8s ease-out, transform 1.2s ease-out;  /* 더 긴 지속시간 */
+        will-change: opacity, visibility;
+    }
+
+    .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    /* 각 섹션별로 딜레이를 다르게 주고 싶다면 */
+    .fade-in-section:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+    .fade-in-section:nth-child(3) {
+        transition-delay: 0.4s;
+    }
+    .fade-in-section:nth-child(4) {
+        transition-delay: 0.6s;
+    }
+
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1414,4 +1483,330 @@
                 alert('URL이 복사되었습니다.');
             });
     });
-    </script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Intersection Observer 설정
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // 한 번 나타난 섹션은 더 이상 관찰하지 않음
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // 모든 fade-in-section 클래스를 가진 요소들을 관찰
+        const fadeElems = document.querySelectorAll('.fade-in-section');
+        fadeElems.forEach(elem => observer.observe(elem));
+    });
+
+    function toggleAccounts(type) {
+        // 기존 팝업이 있다면 제거
+        const existingPopup = document.querySelector('.account-popup');
+        if (existingPopup) {
+            existingPopup.remove();
+        }
+
+        // 계좌 정보 설정
+        const accountInfo = {
+            groom: {
+                title: '신랑측 계좌번호',
+                accounts: [
+                    {
+                        name: '신랑 이태민',
+                        bank: '국민은행',
+                        number: '123-456-000000'
+                    }
+                    // 필요한 경우 더 많은 계좌 추가
+                ]
+            },
+            bride: {
+                title: '신부측 계좌번호',
+                accounts: [
+                    {
+                        name: '신부 김혜현',
+                        bank: '신한은행',
+                        number: '110-123-000000'
+                    }
+                    // 필요한 경우 더 많은 계좌 추가
+                ]
+            }
+        };
+
+        // 팝업 생성
+        const popup = document.createElement('div');
+        popup.className = 'account-popup';
+        
+        // 팝업 내용 생성
+        const content = `
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3>${accountInfo[type].title}</h3>
+                    <button class="close-button">×</button>
+                </div>
+                <div class="popup-body">
+                    ${accountInfo[type].accounts.map(account => `
+                        <div class="account-info-row">
+                            <div class="account-details">
+                                <div class="account-name">${account.name}</div>
+                                <div class="account-bank">${account.bank}</div>
+                                <div class="account-number">${account.number}</div>
+                            </div>
+                            <button class="copy-button" 
+                                data-number="${account.number}"
+                                data-bank="${account.bank}">복사하기</button>
+                        </div>
+                    `).join('')}
+                </div>
+                <button class="close-popup-button">닫기</button>
+            </div>
+        `;
+
+        popup.innerHTML = content;
+        document.body.appendChild(popup);
+
+        // 스타일 추가
+        const style = document.createElement('style');
+        style.textContent = `
+            .account-popup {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+
+            .popup-content {
+                background: white;
+                width: 90%;
+                max-width: 400px;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            .popup-header {
+                padding: 20px;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .popup-header h3 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            .close-button {
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #999;
+            }
+
+            .popup-body {
+                padding: 20px;
+            }
+
+            .account-info-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .account-info-row:last-child {
+                border-bottom: none;
+            }
+
+            .account-details {
+                flex: 1;
+            }
+
+            .account-name {
+                font-size: 15px;
+                margin-bottom: 5px;
+            }
+
+            .account-bank {
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 5px;
+            }
+
+            .account-number {
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .copy-button {
+                padding: 8px 16px;
+                background: #f8f8f8;
+                border: none;
+                border-radius: 6px;
+                color: #333;
+                cursor: pointer;
+                font-size: 14px;
+            }
+
+            .copy-button:hover {
+                background: #f0f0f0;
+            }
+
+            .close-popup-button {
+                width: 100%;
+                padding: 15px;
+                border: none;
+                background: #f8f8f8;
+                color: #333;
+                font-size: 15px;
+                cursor: pointer;
+            }
+
+            .close-popup-button:hover {
+                background: #f0f0f0;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 이벤트 리스너 추가
+        const closeButtons = popup.querySelectorAll('.close-button, .close-popup-button');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                popup.remove();
+            });
+        });
+
+        // 복사 버튼 기능
+        const copyButtons = popup.querySelectorAll('.copy-button');
+        copyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const number = button.dataset.number;
+                const bank = button.dataset.bank;
+                const copyText = `${bank} ${number}`;  // 은행명과 계좌번호를 함께 복사
+                
+                navigator.clipboard.writeText(copyText).then(() => {
+                    button.textContent = '복사됨';
+                    setTimeout(() => {
+                        button.textContent = '복사하기';
+                    }, 1500);
+                });
+            });
+        });
+
+        // 배경 클릭시 팝업 닫기
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.remove();
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('.petals-container');
+        const numberOfPetals = 25;  // 꽃잎 수 약간 감소
+
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            
+            // 크기를 좀 더 작게 조정
+            const size = 15 + Math.random() * 6;  // 10-16px
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            
+            petal.style.left = `${Math.random() * 100}%`;
+            petal.style.top = '-20px';
+            
+            container.appendChild(petal);
+            return petal;
+        }
+
+        function animatePetal(petal) {
+            // 지속 시간을 크게 증가 (8-12초)
+            const duration = 8000 + Math.random() * 4000;
+            const delay = Math.random() * 5000; // 0-5초 지연
+
+            anime({
+                targets: petal,
+                translateY: [
+                    { 
+                        value: container.offsetHeight + 20,
+                        duration: duration,
+                        easing: 'easeInOutSine'  // 부드러운 이징 적용
+                    }
+                ],
+                translateX: [
+                    { 
+                        value: () => anime.random(-100, 20),
+                        duration: duration/3,
+                        easing: 'easeInOutQuad'
+                    },
+                    { 
+                        value: () => anime.random(-20, 100),
+                        duration: duration/3,
+                        easing: 'easeInOutQuad'
+                    },
+                    { 
+                        value: () => anime.random(-50, 50),
+                        duration: duration/3,
+                        easing: 'easeInOutQuad'
+                    }
+                ],
+                rotate: [
+                    {
+                        value: () => anime.random(-180, 180),
+                        duration: duration/2,
+                        easing: 'easeInOutSine'
+                    },
+                    {
+                        value: () => anime.random(-360, 360),
+                        duration: duration/2,
+                        easing: 'easeInOutSine'
+                    }
+                ],
+                scale: [
+                    {
+                        value: [1, 0.9, 1.1, 1],
+                        duration: duration/2,
+                        easing: 'easeInOutSine'
+                    }
+                ],
+                opacity: [
+                    { value: 0, duration: 0 },
+                    { value: 0.3, duration: duration * 0.2 },
+                    { value: 0.3, duration: duration * 0.6 },
+                    { value: 0, duration: duration * 0.2 }
+                ],
+                delay: delay,
+                complete: function() {
+                    petal.remove();
+                    const newPetal = createPetal();
+                    animatePetal(newPetal);
+                }
+            });
+        }
+
+        // 초기 꽃잎 생성 및 애니메이션 시작
+        for (let i = 0; i < numberOfPetals; i++) {
+            setTimeout(() => {
+                const petal = createPetal();
+                animatePetal(petal);
+            }, i * 200);  // 꽃잎 생성 간격 추가
+        }
+    });
+</script>
