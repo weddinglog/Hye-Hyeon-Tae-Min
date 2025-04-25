@@ -773,7 +773,7 @@
 
     /* 위치 섹션 */
     .location-section {
-        padding: 100px 20px 30px 20px;
+        padding: 140px 20px 30px 20px;
         background-color: #fff;
         text-align: center;
     }
@@ -920,7 +920,7 @@
     }
 
     .transport-details {
-        margin: 40px 0;
+        margin: 50px 0;
     }
 
     .transport-item {
@@ -998,7 +998,7 @@
 
     /* 계좌이체 섹션 */
     .account-section {
-        padding: 60px 20px;
+        padding: 50px 20px 40px 20px;
         text-align: center;
         background: #fff;
     }
@@ -1042,16 +1042,6 @@
 
     .account-button:hover {
         background-color: #e5e5e5;
-    }
-
-    @media (max-width: 768px) {
-        .account-section {
-            padding: 40px 15px;
-        }
-        
-        .account-buttons {
-            padding: 0 10px;
-        }
     }
 
     /* 연락처 섹션 */
@@ -1185,8 +1175,8 @@
         opacity: 0;
         transform: translateY(30px);
         visibility: hidden;
-        transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1),
-                   transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 2s cubic-bezier(0.33, 1, 0.68, 1),
+                   transform 2.5s cubic-bezier(0.33, 1, 0.68, 1);
         will-change: opacity, visibility, transform;
     }
 
@@ -1198,21 +1188,21 @@
 
     /* 각 섹션별로 딜레이를 다르게 주고 싶다면 */
     .fade-in-section:nth-child(2) {
-        transition-delay: 0.4s;
+        transition-delay: 0.5s;
     }
     .fade-in-section:nth-child(3) {
-        transition-delay: 0.8s;
+        transition-delay: 1s;
     }
     .fade-in-section:nth-child(4) {
-        transition-delay: 1.2s;
+        transition-delay: 1.5s;
     }
 
     /* 스크롤 다운 시 애니메이션 효과 */
     .fade-in-section.fade-out {
         opacity: 0;
         transform: translateY(-30px);
-        transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
-                   transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 1.5s cubic-bezier(0.33, 1, 0.68, 1),
+                   transform 2s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
     .music-controls {
