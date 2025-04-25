@@ -19,18 +19,6 @@
         <header class="header">
             <div class="petals-container"></div>
             <div class="header-content">
-            <!-- <div class="leaves">
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-            </div> -->
             <div class="header-content">
                 <div class="names">
                     <div class="name-row">Lee Tae Min</div>
@@ -194,16 +182,6 @@
                     </div>
                 </div>
             </div>
-        
-            <div class="parking-notice fade-in-section">
-                <h4>주차안내</h4>
-                <div class="notice-content">
-                    <p>자가용 이용시 웨딩홀 주차장은<br>
-                    1시간 30분까지 무료 주차 가능합니다.</p>
-                    <p>이후 10분 초과시 500원씩 요금이 부과되니<br>
-                    이점 양해 부탁드립니다.</p>
-                </div>
-            </div>
         </section>
 
         <section class="account-section fade-in-section">
@@ -222,7 +200,7 @@
         <!-- 계좌이체 섹션 끝나는 부분에 구분선 추가 -->
         <div class="section-divider"></div>
 
-        <section class="contact-section fade-in-section">
+        <section class="contact-section">
             <div class="contact-list">
                 <div class="contact-item">
                     <div class="contact-info">
@@ -278,6 +256,36 @@
             <!-- 기존 푸터 내용 -->
         </footer>
 
+    </div>
+    <div class="music-controls">
+        <div class="music-controls-container">
+            <button id="play-music" class="music-btn">
+                <svg width="19px" height="19px" fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.09 44.09">
+                    <g>
+                        <path class="cls-1" d="m14.35,22.04v-8.98c0-1.8,1.95-2.92,3.51-2.02l7.77,4.49,7.77,4.49c1.56.9,1.56,3.15,0,4.05l-7.77,4.49-7.77,4.49c-1.56.9-3.51-.23-3.51-2.02v-8.98Z"></path>
+                        <path class="cls-1" d="m22.04,44.09C9.89,44.09,0,34.2,0,22.04S9.89,0,22.04,0s22.04,9.89,22.04,22.04-9.89,22.04-22.04,22.04Zm0-39.93C12.18,4.16,4.16,12.18,4.16,22.04s8.02,17.89,17.89,17.89,17.89-8.02,17.89-17.89S31.91,4.16,22.04,4.16Z"></path>
+                    </g>
+                </svg>
+            </button>
+            <button id="pause-music" class="music-btn">
+                <svg width="19px" height="19px" fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.09 44.09">
+                    <g>
+                        <g>
+                            <rect class="cls-1" x="15.33" y="10.16" width="4.01" height="25.11" rx=".8" ry=".8"></rect>
+                            <path class="cls-1" d="m17.34,35.9c-1.45,0-2.63-1.18-2.63-2.63V12.17c0-1.45,1.18-2.63,2.63-2.63s2.63,1.18,2.63,2.63v21.1c0,1.45-1.18,2.63-2.63,2.63Zm0-25.11c-.76,0-1.38.62-1.38,1.38v21.1c0,.76.62,1.38,1.38,1.38s1.38-.62,1.38-1.38V12.17c0-.76-.62-1.38-1.38-1.38Z"></path>
+                        </g>
+                        <g>
+                            <rect class="cls-1" x="24.49" y="10.16" width="4.01" height="25.11" rx=".8" ry=".8"></rect>
+                            <path class="cls-1" d="m26.5,35.9c-1.45,0-2.63-1.18-2.63-2.63V12.17c0-1.45,1.18-2.63,2.63-2.63s2.63,1.18,2.63,2.63v21.1c0,1.45-1.18,2.63-2.63,2.63Zm0-25.11c-.76,0-1.38.62-1.38,1.38v21.1c0,.76.62,1.38,1.38,1.38s1.38-.62,1.38-1.38V12.17c0-.76-.62-1.38-1.38-1.38Z"></path>
+                        </g>
+                        <path class="cls-1" d="m22.04,44.09C9.89,44.09,0,34.2,0,22.04S9.89,0,22.04,0s22.04,9.89,22.04,22.04-9.89,22.04-22.04,22.04Zm0-39.93C12.18,4.16,4.16,12.18,4.16,22.04s8.02,17.89,17.89,17.89,17.89-8.02,17.89-17.89S31.91,4.16,22.04,4.16Z"></path>
+                    </g>
+                </svg>
+            </button>
+        </div>
+        <audio id="background-music" loop>
+            <source src="https://s3.rollinginpapercard.com/music/forest_morning.mp3" type="audio/mpeg">
+        </audio>
     </div>
 </body>
 </html>
@@ -426,7 +434,7 @@
     
     .gallery-section {
         padding: 20px;
-        height: 490px;
+        height: 440px;
         background-color: #f8f8f8;
     }
 
@@ -471,100 +479,6 @@
         transform-origin: center center;
         transition: all 0.3s ease;
     }
-
-
-    /* CSS 추가 */
-    /* .leaves {
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-        z-index: 3;
-        pointer-events: none;
-    }
-
-    .leaves i {
-        position: absolute;
-        display: block;
-        width: 15px;
-        height: 15px;
-        background: #ffadf1;
-        border-radius: 20% 80% 20% 80%;
-        opacity: 0.2;
-        animation: falling 10s infinite linear;
-        top: -10%;
-    }
-
-    .leaves i:nth-child(1) {
-        left: 10%;
-        animation-delay: 0s;
-    }
-
-    .leaves i:nth-child(2) {
-        left: 20%;
-        animation-delay: 2s;
-        width: 12px;
-        height: 12px;
-    }
-
-    .leaves i:nth-child(3) {
-        left: 35%;
-        animation-delay: 4s;
-    }
-
-    .leaves i:nth-child(4) {
-        left: 50%;
-        animation-delay: 6s;
-        width: 20px;
-        height: 20px;
-    }
-
-    .leaves i:nth-child(5) {
-        left: 65%;
-        animation-delay: 8s;
-    }
-
-    .leaves i:nth-child(6) {
-        left: 75%;
-        animation-delay: 1s;
-        width: 18px;
-        height: 18px;
-    }
-
-    .leaves i:nth-child(7) {
-        left: 85%;
-        animation-delay: 3s;
-    }
-
-    .leaves i:nth-child(8) {
-        left: 90%;
-        animation-delay: 5s;
-        width: 14px;
-        height: 14px;
-    }
-
-    .leaves i:nth-child(9) {
-        left: 25%;
-        animation-delay: 7s;
-    }
-
-    .leaves i:nth-child(10) {
-        left: 45%;
-        animation-delay: 9s;
-        width: 16px;
-        height: 16px;
-    }
-
-    @keyframes falling {
-        0% {
-            transform: translateY(-10%) rotate(0deg);
-            opacity: 0.5;
-        }
-        100% {
-            transform: translateY(100vh) rotate(360deg);
-            opacity: 0;
-        }
-    } */
 
     /* 챕터 2 */
     .greeting-section {
@@ -1046,21 +960,6 @@
         margin-bottom: 5px;
     }
 
-    .parking-notice {
-        background-color: #f8f8f8;
-        border-radius: 15px;
-        padding: 25px;
-        margin: 40px auto;
-        max-width: 500px;
-    }
-
-    .parking-notice h4 {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 15px;
-        font-weight: 500;
-    }
-
     .notice-content {
         color: #666;
         font-size: 14px;
@@ -1078,11 +977,6 @@
     @media (max-width: 768px) {
         .transport-item {
             padding: 0 20px;
-        }
-        
-        .parking-notice {
-            margin: 30px 20px;
-            padding: 20px;
         }
     }
 
@@ -1314,6 +1208,40 @@
         transition-delay: 0.6s;
     }
 
+    .music-controls {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .music-controls-container {
+        width: 100%;
+        text-align: right;
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .music-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        margin-left: 10px;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+    }
+
+    .music-btn:hover {
+        opacity: 1;
+    }
+
+    #pause-music {
+        display: none;
+    }
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1812,5 +1740,24 @@
         }
 
         startPetals();
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const music = document.getElementById('background-music');
+        const playBtn = document.getElementById('play-music');
+        const pauseBtn = document.getElementById('pause-music');
+
+        playBtn.addEventListener('click', function() {
+            music.play();
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'inline-block';
+        });
+
+        pauseBtn.addEventListener('click', function() {
+            music.pause();
+            pauseBtn.style.display = 'none';
+            playBtn.style.display = 'inline-block';
+        });
     });
 </script>
