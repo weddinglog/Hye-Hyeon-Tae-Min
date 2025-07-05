@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- 카카오 JavaScript SDK -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"></script>
     <!-- 개인/일반 통합 -->
     <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=l0uzgup5vy"></script>
 </head>
@@ -26,7 +28,7 @@
                         <div class="name-row">Kim Hye Hyeon</div>
                     </div>
                     <div class="header-image">
-                        <img src="./img/wedding2.jpg" alt="웨딩 커플 이미지">
+                        <img src="./img/KakaoTalk_20250705_101844911.jpg" alt="웨딩 커플 이미지">
                     </div>
                     <div class="wedding-date-place">
                         <div class="wedding-date">2025년 8월 23일 토요일 오후 2시</div>
@@ -83,28 +85,28 @@
                         <div class="carousel-item active">
                             <div class="gallery-grid">
                                 <div class="gallery-row">
-                                    <img src="./img/wedding2.jpg" alt="웨딩 이미지 1">
-                                    <img src="./img/wedding_img.png" alt="웨딩 이미지 2">
-                                    <img src="./img/wedding2.jpg" alt="웨딩 이미지 3">
+                                    <img src="./img/KakaoTalk_20250705_101844911.jpg" alt="웨딩 이미지 1">
+                                    <img src="./img/KakaoTalk_20250705_101845152.jpg" alt="웨딩 이미지 2">
+                                    <img src="./img/KakaoTalk_20250705_101845351.jpg" alt="웨딩 이미지 3">
                                 </div>
                                 <div class="gallery-row">
-                                    <img src="./img/wedding.jpg" alt="웨딩 이미지 4">
-                                    <img src="./img/wedding_img.png" alt="웨딩 이미지 5">
-                                    <img src="./img/wedding2.jpg" alt="웨딩 이미지 6">
+                                    <img src="./img/KakaoTalk_20250705_101845888.jpg" alt="웨딩 이미지 4">
+                                    <img src="./img/KakaoTalk_20250705_101846227.jpg" alt="웨딩 이미지 5">
+                                    <img src="./img/KakaoTalk_20250705_101846227.jpg" alt="웨딩 이미지 6">
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="gallery-grid">
                                 <div class="gallery-row">
-                                    <img src="./img/wedding2.jpg" alt="웨딩 이미지 1">
-                                    <img src="./img/wedding_img.png" alt="웨딩 이미지 2">
-                                    <img src="./img/wedding2.jpg" alt="웨딩 이미지 3">
+                                    <img src="./img/KakaoTalk_20250705_101844911.jpg" alt="웨딩 이미지 1">
+                                    <img src="./img/KakaoTalk_20250705_101845152.jpg" alt="웨딩 이미지 2">
+                                    <img src="./img/KakaoTalk_20250705_101845351.jpg" alt="웨딩 이미지 3">
                                 </div>
                                 <div class="gallery-row">
-                                    <img src="./img/wedding2.jpg" alt="웨딩 이미지 4">
-                                    <img src="./img/wedding_img.png" alt="웨딩 이미지 5">
-                                    <img src="./img/wedding2.jpg" alt="웨딩 이미지 6">
+                                    <img src="./img/KakaoTalk_20250705_101845888.jpg" alt="웨딩 이미지 4">
+                                    <img src="./img/KakaoTalk_20250705_101846227.jpg" alt="웨딩 이미지 5">
+                                    <img src="./img/KakaoTalk_20250705_101846227.jpg" alt="웨딩 이미지 6">
                                 </div>
                             </div>
                         </div>
@@ -119,55 +121,6 @@
                         <span class="carousel-control-next-icon"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
-                </div>
-            </section>
-
-            <section class="location-section fade-in-section">
-                <h2 class="section-title">LOCATION</h2>
-                <h3 class="sub-title">오시는 길</h3>
-                
-                <div class="venue-info">
-                    <p class="venue-name">유성컨벤션웨딩홀 3층 그랜드홀</p>
-                    <p class="venue-address">대전광역시 유성구 온천북로77</p>
-                </div>
-            
-                <div class="map-container">
-                    <div id="map" style="width:100%;height:350px;"></div>
-                </div>
-                
-                <div class="transport-details fade-in-section">
-                    <div class="transport-item">
-                        <span class="transport-icon">🚇</span>
-                        <div class="transport-text">
-                            <h4>지하철</h4>
-                            <p>1호선 갑천역 3번 출구</p>
-                            <p>(돌다리 건너편)</p>
-                        </div>
-                    </div>
-            
-                    <div class="transport-item">
-                        <span class="transport-icon">🚌</span>
-                        <div class="transport-text">
-                            <h4>버스</h4>
-                            <p>시내버스: 102번, 108번, 706번, 106번, 113번 승차 시 홈플러스 유성점에서 하차</p>
-                        </div>
-                    </div>
-            
-                    <div class="transport-item">
-                        <span class="transport-icon">🚗</span>
-                        <div class="transport-text">
-                            <h4>자가용</h4>
-                            <p>유성IC → 홈플러스 유성점 → 갑천변 유성컨벤션웨딩홀 (약 3.7Km)</p>
-                        </div>
-                    </div>
-
-                    <div class="transport-item">
-                        <span class="transport-icon">🅿️</span>
-                        <div class="transport-text">
-                            <h4>주차</h4>
-                            <p>유성컨벤션웨딩홀 건물 주차장, 유성컨벤션 맞은 편 부지 공간 주차 가능<br>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -224,10 +177,59 @@
             <!-- 계좌이체 섹션 끝나는 부분에 구분선 추가 -->
             <div class="section-divider fade-in-section"></div>
 
+            <section class="location-section fade-in-section">
+                <h2 class="section-title">LOCATION</h2>
+                <h3 class="sub-title">오시는 길</h3>
+                
+                <div class="venue-info">
+                    <p class="venue-name">유성컨벤션웨딩홀 3층 그랜드홀</p>
+                    <p class="venue-address">대전광역시 유성구 온천북로77</p>
+                </div>
+            
+                <div class="map-container">
+                    <div id="map" style="width:100%;height:350px;"></div>
+                </div>
+                
+                <div class="transport-details fade-in-section">
+                    <div class="transport-item">
+                        <span class="transport-icon">🚇</span>
+                        <div class="transport-text">
+                            <h4>지하철</h4>
+                            <p>1호선 갑천역 3번 출구</p>
+                            <p>(돌다리 건너편)</p>
+                        </div>
+                    </div>
+            
+                    <div class="transport-item">
+                        <span class="transport-icon">🚌</span>
+                        <div class="transport-text">
+                            <h4>버스</h4>
+                            <p>시내버스: 102번, 108번, 706번, 106번, 113번 승차 시 홈플러스 유성점에서 하차</p>
+                        </div>
+                    </div>
+            
+                    <div class="transport-item">
+                        <span class="transport-icon">🚗</span>
+                        <div class="transport-text">
+                            <h4>자가용</h4>
+                            <p>유성IC → 홈플러스 유성점 → 갑천변 유성컨벤션웨딩홀 (약 3.7Km)</p>
+                        </div>
+                    </div>
+
+                    <div class="transport-item">
+                        <span class="transport-icon">🅿️</span>
+                        <div class="transport-text">
+                            <h4>주차</h4>
+                            <p>유성컨벤션웨딩홀 건물 주차장, 유성컨벤션 맞은 편 부지 공간 주차 가능<br>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- 공유 섹션 추가 -->
             <section class="share-section">
                 <div class="share-buttons">
-                    <a href="#" class="share-button kakao">
+                    <a href="#" class="share-button kakao" onclick="shareKakao()">
                         <img src="./img/kakao2.png" alt="카카오톡 공유하기" class="share-icon">
                         카카오톡 공유하기
                     </a>
@@ -1740,5 +1742,43 @@ naver.maps.onJSContentLoaded = function() {
             pauseBtn.style.display = 'none';
             playBtn.style.display = 'inline-block';
         });
+
+        // 카카오 SDK 초기화
+        if (window.Kakao) {
+            Kakao.init('9e1366c766b15ecc2d70954acf46d2c8');
+        }
     });
+
+    // 카카오톡 공유 함수
+    function shareKakao() {
+        if (!window.Kakao) {
+            alert('카카오톡 공유 기능을 사용할 수 없습니다.');
+            return;
+        }
+
+        const currentUrl = window.location.href;
+        const imageUrl = new URL('./img/wedding2.jpg', currentUrl).href;
+
+        Kakao.Share.sendDefault({
+            objectType: 'feed',
+            content: {
+                title: '이태민 ❤️ 김혜현 결혼합니다',
+                description: '2025년 8월 23일 토요일 오후 2시\n유성컨벤션웨딩홀 3층 그랜드홀\n\n새로운 마음과 새 의미를 간직하며 저희 두 사람이 새 출발의 첫걸음을 내딛습니다.',
+                imageUrl: imageUrl,
+                link: {
+                    mobileWebUrl: currentUrl,
+                    webUrl: currentUrl
+                }
+            },
+            buttons: [
+                {
+                    title: '청첩장 보기',
+                    link: {
+                        mobileWebUrl: currentUrl,
+                        webUrl: currentUrl
+                    }
+                }
+            ]
+        });
+    }
 </script>
