@@ -37,7 +37,7 @@
             </header>
             <section class="greeting-section fade-in-section">
                 <div class="greeting-content fade-in-section">
-                    <h2 class="greeting-title">결혼합니다</h2>
+                    <h2 class="greeting-title"></h2>
                     <div class="greeting-text">
                         <p>새로운 마음과 새 의미를 간직하며</p>
                         <p>저희 두 사람이 새 출발의 첫걸음을 내딛습니다.</p>
@@ -204,7 +204,7 @@
             <!-- 계좌이체 섹션 끝나는 부분에 구분선 추가 -->
             <div class="section-divider fade-in-section"></div>
             <!-- 공유 섹션 추가 -->
-            <section class="share-section">
+            <section class="share-section fade-in-section">
                 <div class="share-buttons">
                     <a href="#" class="share-button kakao" onclick="shareKakao()">
                         <img src="./img/kakao2.png" alt="카카오톡 공유하기" class="share-icon">
@@ -238,8 +238,8 @@
                         <span class="transport-icon">🚇</span>
                         <div class="transport-text">
                             <h4>지하철</h4>
-                            <p>1호선 갑천역 3번 출구</p>
-                            <p>(돌다리 건너편)</p>
+                            <p>1호선 갑천역 3번 출구, 도보시간 14분</p>
+                            <p>1호선 유성온천역 8번출구, 도보시간 20분</p>
                         </div>
                     </div>
             
@@ -1827,7 +1827,7 @@ naver.maps.onJSContentLoaded = function() {
             }
 
             .popup-body {
-                padding: 20px;
+                padding: 10px 20px;
             }
 
             .account-info-row {
@@ -2066,8 +2066,12 @@ naver.maps.onJSContentLoaded = function() {
                 if (entry.isIntersecting) {
                     const target = entry.target;
                     
-                    if (target.classList.contains('greeting-title')) {
-                        typeText(target, '결혼합니다', 200);
+                    if (target.classList.contains('greeting-content')) {
+                        // greeting-content가 화면에 나타나면 즉시 타이핑 시작
+                        const greetingTitle = target.querySelector('.greeting-title');
+                        if (greetingTitle) {
+                            typeText(greetingTitle, '결혼합니다', 200);
+                        }
                     }
                     
                     // 한 번만 실행하고 관찰 중단
@@ -2080,9 +2084,9 @@ naver.maps.onJSContentLoaded = function() {
         });
 
         // 관찰할 요소들 추가
-        const greetingTitle = document.querySelector('.greeting-title');
+        const greetingContent = document.querySelector('.greeting-content');
         
-        if (greetingTitle) observer.observe(greetingTitle);
+        if (greetingContent) observer.observe(greetingContent);
     }
 
     // 텍스트 타이핑 효과
