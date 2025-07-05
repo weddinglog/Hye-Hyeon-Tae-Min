@@ -19,9 +19,8 @@
 <body>
     <div class="template-app-wrapper">
         <div class="mcard-view">
+            <div class="petals-container"></div>
             <header class="header">
-                <div class="petals-container"></div>
-                <div class="header-content">
                 <div class="header-content">
                     <div class="names">
                         <div class="name-row">Lee Tae Min</div>
@@ -64,6 +63,34 @@
                 </div>
                 <div class="greeting-image-wrapper">
                     <img src="./img/wedding3.png" alt="웨딩 커플 이미지">
+                </div>
+            </section>
+
+            <!-- D-DAY 카운트다운 섹션 -->
+            <section class="dday-section fade-in-section">
+                <div class="dday-container">
+                    <h2 class="dday-title">D-DAY</h2>
+                    <div class="dday-counter">
+                        <div class="counter-item">
+                            <span class="counter-number" id="days">0</span>
+                            <span class="counter-label">일</span>
+                        </div>
+                        <div class="counter-item">
+                            <span class="counter-number" id="hours">0</span>
+                            <span class="counter-label">시간</span>
+                        </div>
+                        <div class="counter-item">
+                            <span class="counter-number" id="minutes">0</span>
+                            <span class="counter-label">분</span>
+                        </div>
+                        <div class="counter-item">
+                            <span class="counter-number" id="seconds">0</span>
+                            <span class="counter-label">초</span>
+                        </div>
+                    </div>
+                    <div class="dday-message">
+                        <p>저희의 특별한 날까지</p>
+                    </div>
                 </div>
             </section>
 
@@ -248,6 +275,15 @@
         </div>
         <div class="music-controls">
             <div class="music-controls-container">
+                <!-- 웨이브 시각화 추가 -->
+                <div class="music-visualizer" id="music-visualizer">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                </div>
+                
                 <button id="play-music" class="music-btn">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448.075 448.075" xml:space="preserve" width="18px" height="18px">
                         <path d="M352.021,16.075c0-6.08-3.52-11.84-8.96-14.4c-5.76-2.88-12.16-1.92-16.96,1.92l-141.76,112.96l167.68,167.68V16.075z"></path>
@@ -325,7 +361,7 @@
         position: relative;
     }
     .names {
-        padding: 70px 0px 20px 0px;
+        padding: 55px 0px 20px 0px;
         margin-bottom: 0;
         font-family: 'Playfair Display', serif;
         font-weight: 300;
@@ -454,11 +490,39 @@
     .petals-container {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: 300vh; /* 화면 높이의 3배로 설정 (갤러리 섹션 전까지) */
         overflow: hidden;
         z-index: 3;
         pointer-events: none;
         perspective: 1000px;
+        top: 0;
+        left: 0;
+    }
+
+    /* 하트 터치 효과 */
+    .touch-heart {
+        position: fixed;
+        font-size: 20px;
+        color: #ff6b8a;
+        pointer-events: none;
+        z-index: 1000;
+        user-select: none;
+        text-shadow: 0 0 10px rgba(255, 107, 138, 0.5);
+    }
+
+    @keyframes heartFloat {
+        0% {
+            transform: translateY(0) scale(0.5);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+            transform: translateY(-10px) scale(1);
+        }
+        100% {
+            transform: translateY(-100px) scale(1.2);
+            opacity: 0;
+        }
     }
 
     .petal {
@@ -493,6 +557,27 @@
         color: #9b9999;
         margin-bottom: 40px;
         letter-spacing: 5px;
+        position: relative;
+        overflow: hidden;
+        opacity: 1;
+        min-height: 40px; /* 레이아웃 유지를 위한 최소 높이 */
+    }
+
+    /* 타이핑 효과를 위한 스타일 */
+    .greeting-title.typing {
+        opacity: 1;
+    }
+
+    .greeting-title.typing::after {
+        content: '|';
+        color: #d4687a;
+        animation: blink 1s infinite;
+        margin-left: 3px;
+    }
+
+    @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
     }
 
     .greeting-text {
@@ -503,6 +588,10 @@
         color: #666;
         margin-bottom: 50px;
     }
+
+
+
+
 
     .greeting-text p {
         margin: 10px 0;
@@ -762,6 +851,102 @@
     @media (max-width: 768px) {
         .carousel-item {
             height: 320px;
+        }
+    }
+
+    /* D-DAY 카운트다운 섹션 */
+    .dday-section {
+        padding: 60px 20px;
+        background: #fafafa;
+        text-align: center;
+        position: relative;
+    }
+
+    .dday-container {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .dday-title {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 18px;
+        font-weight: 300;
+        color: #666;
+        margin-bottom: 40px;
+        letter-spacing: 2px;
+    }
+
+    .dday-counter {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 30px;
+        background: white;
+        padding: 30px 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        border: 1px solid #f0f0f0;
+    }
+
+    .counter-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+    }
+
+    .counter-number {
+        font-size: 32px;
+        font-weight: 300;
+        color: #333;
+        font-family: 'Noto Serif KR', serif;
+        margin-bottom: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .counter-label {
+        font-size: 12px;
+        color: #999;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        font-family: 'Noto Serif KR', serif;
+    }
+
+    .dday-message {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 14px;
+        color: #666;
+        font-weight: 300;
+        opacity: 0.8;
+    }
+
+    .dday-message p {
+        margin: 0;
+    }
+
+    @media (max-width: 480px) {
+        .dday-section {
+            padding: 40px 20px;
+        }
+        
+        .dday-counter {
+            padding: 25px 15px;
+        }
+        
+        .counter-number {
+            font-size: 24px;
+        }
+        
+        .counter-label {
+            font-size: 11px;
+        }
+        
+        .dday-title {
+            font-size: 16px;
+        }
+        
+        .dday-message {
+            font-size: 13px;
         }
     }
 
@@ -1156,28 +1341,131 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        gap: 15px;
+    }
+
+    /* 웨이브 시각화 스타일 */
+    .music-visualizer {
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        height: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .music-visualizer.active {
+        opacity: 0.8;
+    }
+
+    .wave-bar {
+        width: 2px;
+        height: 4px;
+        background: linear-gradient(to top, #ff6b8a, #ff8fa3);
+        border-radius: 1px;
+        animation: wave-dance 0.8s ease-in-out infinite;
+        transform-origin: bottom;
+    }
+
+    .wave-bar:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .wave-bar:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    .wave-bar:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+
+    .wave-bar:nth-child(4) {
+        animation-delay: 0.3s;
+    }
+
+    .wave-bar:nth-child(5) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes wave-dance {
+        0%, 100% {
+            height: 4px;
+            opacity: 0.6;
+        }
+        25% {
+            height: 12px;
+            opacity: 1;
+        }
+        50% {
+            height: 8px;
+            opacity: 0.8;
+        }
+        75% {
+            height: 16px;
+            opacity: 1;
+        }
     }
 
     .music-btn {
         background: none;
         border: none;
         cursor: pointer;
-        padding: 5px;
-        margin-left: 10px;
+        padding: 8px;
+        margin-left: 0;
         opacity: 0.7;
-        transition: opacity 0.3s ease;
+        transition: all 0.3s ease;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .music-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba(255, 107, 138, 0.2) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+        z-index: -1;
+    }
+
+    .music-btn.playing::before {
+        width: 40px;
+        height: 40px;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.3;
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0.1;
+        }
     }
 
     .music-btn svg {
         fill: #666;
+        transition: fill 0.3s ease;
     }
 
     .music-btn:hover {
         opacity: 1;
+        transform: scale(1.1);
     }
 
     .music-btn:hover svg {
-        fill: #333;
+        fill: #ff6b8a;
+    }
+
+    .music-btn.playing svg {
+        fill: #ff6b8a;
     }
 
     #pause-music {
@@ -1441,10 +1729,19 @@ naver.maps.onJSContentLoaded = function() {
                 accounts: [
                     {
                         name: '신부 김혜현',
-                        bank: '신한은행',
-                        number: '110-123-000000'
+                        bank: '국민은행',
+                        number: '605102-04-161344'
+                    },
+                    {
+                        name: '혼주 김기수',
+                        bank: '농협은행',
+                        number: '631-12-331336'
+                    },
+                    {
+                        name: '혼주 허미숙',
+                        bank: '기업은행',
+                        number: '010-4484-1467'
                     }
-                    // 필요한 경우 더 많은 계좌 추가
                 ]
             }
         };
@@ -1629,7 +1926,7 @@ naver.maps.onJSContentLoaded = function() {
 
     document.addEventListener('DOMContentLoaded', function() {
         const container = document.querySelector('.petals-container');
-        const numberOfPetals = 30;
+        const numberOfPetals = 40; // 더 넓은 범위를 위해 꽃잎 개수 증가
 
         function createPetal(isInitial = false) {
             const petal = document.createElement('div');
@@ -1641,11 +1938,11 @@ naver.maps.onJSContentLoaded = function() {
             
             petal.style.left = `${Math.random() * 120 - 10}%`;
             
-            // 초기 꽃잎은 화면 중간에서 시작
+            // 초기 꽃잎은 화면 상단에서 시작
             if (isInitial) {
-                petal.style.top = `${Math.random() * 20 + 20}%`; // 화면 20-40% 위치에서 시작
+                petal.style.top = `${Math.random() * 10 - 5}%`; // 화면 -5% ~ 5% 위치에서 시작 (더 위쪽)
             } else {
-                petal.style.top = '-20px';
+                petal.style.top = '-60px'; // 화면 위쪽에서 더 멀리 시작
             }
 
             const colors = [
@@ -1669,19 +1966,36 @@ naver.maps.onJSContentLoaded = function() {
             const points = [];
             const segments = 10;
             
+            // 갤러리 섹션 전까지 떨어지도록 높이를 늘림
+            const fallHeight = window.innerHeight * 2.5; // 화면 높이의 2.5배까지 떨어짐 (갤러리 섹션 전까지)
+            
             for(let i = 0; i <= segments; i++) {
                 const progress = i / segments;
                 points.push({
                     // 좌우 움직임 범위 조절
                     x: Math.sin(progress * Math.PI * 2.5) * (80 + Math.random() * 40),
-                    y: container.offsetHeight * progress
+                    y: fallHeight * progress
                 });
             }
 
             anime({
                 targets: petal,
-                translateX: points.map(p => p.x),
-                translateY: points.map(p => p.y),
+                translateX: [
+                    { value: points[0].x, duration: 0 }, // 즉시 첫 번째 위치로
+                    ...points.slice(1).map((point, index) => ({
+                        value: point.x,
+                        duration: duration / points.length,
+                        delay: 0
+                    }))
+                ],
+                translateY: [
+                    { value: points[0].y, duration: 0 }, // 즉시 첫 번째 위치로
+                    ...points.slice(1).map((point, index) => ({
+                        value: point.y,
+                        duration: duration / points.length,
+                        delay: 0
+                    }))
+                ],
                 rotate: [
                     { 
                         value: () => {
@@ -1701,76 +2015,337 @@ naver.maps.onJSContentLoaded = function() {
                     }
                 ],
                 opacity: [
-                    { value: 0, duration: 0 },
-                    { value: 0.7, duration: duration * 0.1 },
-                    { value: 0.7, duration: duration * 0.8 },
-                    { value: 0, duration: duration * 0.1 }
+                    { value: 0.7, duration: 0 }, // 즉시 나타남
+                    { value: 0.7, duration: duration - 400 }, // 나머지 시간동안 유지
+                    { value: 0, duration: 400 } // 빠르게 사라짐
                 ],
                 duration: duration,
                 easing: 'linear',
+                delay: 0, // 지연 없이 바로 시작
                 complete: function() {
                     petal.remove();
                     const newPetal = createPetal();
-                    setTimeout(() => animatePetal(newPetal), Math.random() * 2000);  // 재생성 간격도 늘림
+                    setTimeout(() => animatePetal(newPetal), Math.random() * 1000);  // 재생성 간격을 더 빠르게
                 }
             });
         }
 
         function startPetals() {
-            // 초기 꽃잎 10개를 화면 중간에서 시작
-            for (let i = 0; i < 15; i++) {
+            // 초기 꽃잎 20개를 화면 상단에서 시작
+            for (let i = 0; i < 20; i++) {
                 const petal = createPetal(true);
                 setTimeout(() => {
                     animatePetal(petal);
-                }, i * 200);
+                }, i * 100); // 더 빠른 간격으로 생성
             }
 
             // 나머지 꽃잎들은 중간 꽃잎이 떨어지기 시작할 때 이어서 생성
-            for (let i = 15; i < numberOfPetals; i++) {
+            for (let i = 20; i < numberOfPetals; i++) {
                 setTimeout(() => {
                     const petal = createPetal();
                     animatePetal(petal);
-                }, i * 200 + Math.random() * 200);  // 생성 간격을 200ms로 조정
+                }, i * 100 + Math.random() * 100);  // 생성 간격을 100ms로 조정
             }
         }
 
         startPetals();
+        
+        // 터치 하트 효과 초기화
+        initTouchHearts();
+        
+        // 타이핑 애니메이션 초기화
+        initTypingAnimation();
     });
+
+    // 타이핑 애니메이션 함수
+    function initTypingAnimation() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    
+                    if (target.classList.contains('greeting-title')) {
+                        typeText(target, '결혼합니다', 200);
+                    }
+                    
+                    // 한 번만 실행하고 관찰 중단
+                    observer.unobserve(target);
+                }
+            });
+        }, {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // 관찰할 요소들 추가
+        const greetingTitle = document.querySelector('.greeting-title');
+        
+        if (greetingTitle) observer.observe(greetingTitle);
+    }
+
+    // 텍스트 타이핑 효과
+    function typeText(element, text, speed = 150) {
+        element.textContent = '';
+        element.classList.add('typing');
+        
+        let i = 0;
+        
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                // 타이핑 완료 후 커서 제거
+                setTimeout(() => {
+                    element.classList.remove('typing');
+                }, 1000);
+            }
+        }
+        
+        type();
+    }
+
+
+
+    // 터치 하트 효과 함수
+    function initTouchHearts() {
+        let touchStartTime;
+        let touchStartPos;
+        let isScrolling = false;
+        
+        // 터치 시작
+        document.addEventListener('touchstart', function(e) {
+            touchStartTime = Date.now();
+            touchStartPos = {
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY
+            };
+            isScrolling = false;
+        }, { passive: true });
+        
+        // 터치 이동 (스크롤 감지)
+        document.addEventListener('touchmove', function(e) {
+            if (touchStartPos) {
+                const deltaX = Math.abs(e.touches[0].clientX - touchStartPos.x);
+                const deltaY = Math.abs(e.touches[0].clientY - touchStartPos.y);
+                
+                // 스크롤 중인지 확인 (세로 이동이 가로 이동보다 클 때)
+                if (deltaY > 10 && deltaY > deltaX) {
+                    isScrolling = true;
+                }
+            }
+        }, { passive: true });
+        
+        // 터치 끝
+        document.addEventListener('touchend', function(e) {
+            if (!touchStartPos) return;
+            
+            const touchDuration = Date.now() - touchStartTime;
+            
+            // 인터랙티브 요소 체크
+            const target = document.elementFromPoint(touchStartPos.x, touchStartPos.y);
+            if (target && (
+                target.tagName === 'BUTTON' || 
+                target.tagName === 'A' || 
+                target.closest('button') || 
+                target.closest('a') ||
+                target.closest('.music-controls') ||
+                target.closest('.account-popup') ||
+                target.closest('.image-expanded') ||
+                target.closest('.gallery-section') ||
+                target.closest('.gallery-row') ||
+                target.closest('.carousel') ||
+                target.closest('.contact-button') ||
+                target.closest('.share-button'))) {
+                return;
+            }
+            
+            // 짧은 터치이고 스크롤이 아닐 때만 하트 생성
+            if (touchDuration < 300 && !isScrolling) {
+                createHeart(touchStartPos.x, touchStartPos.y);
+            }
+        }, { passive: true });
+        
+        // 클릭 이벤트 (데스크톱)
+        document.addEventListener('click', function(e) {
+            // 인터랙티브 요소들을 클릭할 때는 하트 생성 안함
+            if (e.target.tagName === 'BUTTON' || 
+                e.target.tagName === 'A' || 
+                e.target.closest('button') || 
+                e.target.closest('a') ||
+                e.target.closest('.music-controls') ||
+                e.target.closest('.account-popup') ||
+                e.target.closest('.image-expanded') ||
+                e.target.closest('.gallery-section') ||
+                e.target.closest('.gallery-row') ||
+                e.target.closest('.carousel') ||
+                e.target.closest('.contact-button') ||
+                e.target.closest('.share-button')) {
+                return;
+            }
+            
+            createHeart(e.clientX, e.clientY);
+        });
+        
+        function createHeart(x, y) {
+            // 여러 개의 하트 생성 (1-3개)
+            const heartCount = Math.floor(Math.random() * 3) + 1;
+            
+            for (let i = 0; i < heartCount; i++) {
+                setTimeout(() => {
+                    generateSingleHeart(x, y, i);
+                }, i * 100);
+            }
+        }
+        
+        function generateSingleHeart(x, y, index) {
+            const heart = document.createElement('div');
+            heart.className = 'touch-heart';
+            
+            // 다양한 하트 이모지
+            const heartTypes = ['❤️', '💕', '💖', '💗', '💓', '💝', '💘'];
+            heart.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            
+            // 위치 설정 (약간씩 다르게)
+            const offsetX = (Math.random() - 0.5) * 60;
+            const offsetY = (Math.random() - 0.5) * 20;
+            
+            heart.style.left = (x + offsetX) + 'px';
+            heart.style.top = (y + offsetY) + 'px';
+            
+            // 크기 랜덤
+            const size = 16 + Math.random() * 8;
+            heart.style.fontSize = size + 'px';
+            
+            // 애니메이션 지속시간 랜덤
+            const duration = 1500 + Math.random() * 1000;
+            heart.style.animation = `heartFloat ${duration}ms ease-out`;
+            
+            document.body.appendChild(heart);
+            
+            // 애니메이션 완료 후 제거
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }, duration);
+        }
+    }
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const music = document.getElementById('background-music');
         const playBtn = document.getElementById('play-music');
         const pauseBtn = document.getElementById('pause-music');
+        const visualizer = document.getElementById('music-visualizer');
+
+        // 웨이브 시각화 제어 함수
+        function startVisualizer() {
+            visualizer.classList.add('active');
+            playBtn.classList.add('playing');
+            pauseBtn.classList.add('playing');
+        }
+
+        function stopVisualizer() {
+            visualizer.classList.remove('active');
+            playBtn.classList.remove('playing');
+            pauseBtn.classList.remove('playing');
+        }
 
         // 페이지 로드 시 음악 자동 재생
         music.play().then(() => {
             // 재생 성공 시 버튼 상태 변경
             playBtn.style.display = 'none';
             pauseBtn.style.display = 'inline-block';
+            startVisualizer();
         }).catch(error => {
             // 자동 재생이 차단된 경우 (브라우저 정책)
             console.log("자동 재생이 차단되었습니다:", error);
             // 버튼 상태는 그대로 유지
+            stopVisualizer();
         });
 
         playBtn.addEventListener('click', function() {
             music.play();
             playBtn.style.display = 'none';
             pauseBtn.style.display = 'inline-block';
+            startVisualizer();
         });
 
         pauseBtn.addEventListener('click', function() {
             music.pause();
             pauseBtn.style.display = 'none';
             playBtn.style.display = 'inline-block';
+            stopVisualizer();
         });
+
+        // 음악 이벤트 리스너 추가
+        music.addEventListener('play', startVisualizer);
+        music.addEventListener('pause', stopVisualizer);
+        music.addEventListener('ended', stopVisualizer);
 
         // 카카오 SDK 초기화
         if (window.Kakao) {
             Kakao.init('9e1366c766b15ecc2d70954acf46d2c8');
         }
+
+        // D-DAY 카운트다운 시작
+        startCountdown();
     });
+
+    // D-DAY 카운트다운 함수
+    function startCountdown() {
+        // 결혼식 날짜: 2025년 8월 23일 토요일 오후 2시
+        const weddingDate = new Date('2025-08-23T14:00:00+09:00');
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate.getTime() - now;
+            
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // 숫자 애니메이션 효과
+                animateNumber('days', days);
+                animateNumber('hours', hours);
+                animateNumber('minutes', minutes);
+                animateNumber('seconds', seconds);
+            } else {
+                // 결혼식 당일이 되면
+                document.querySelector('.dday-message p').innerHTML = '오늘이 바로 그 날입니다! 💕';
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+            }
+        }
+        
+        function animateNumber(id, newValue) {
+            const element = document.getElementById(id);
+            const currentValue = parseInt(element.textContent);
+            
+            if (currentValue !== newValue) {
+                element.style.transform = 'scale(1.05)';
+                element.style.opacity = '0.7';
+                
+                setTimeout(() => {
+                    element.textContent = newValue;
+                    element.style.transform = 'scale(1)';
+                    element.style.opacity = '1';
+                }, 200);
+            }
+        }
+        
+        // 초기 실행
+        updateCountdown();
+        
+        // 1초마다 업데이트
+        setInterval(updateCountdown, 1000);
+    }
 
     // 카카오톡 공유 함수
     function shareKakao() {
