@@ -1233,9 +1233,32 @@
             expandedDiv.appendChild(imageContainer);
             document.body.appendChild(expandedDiv);
             
+            // History API를 사용하여 뒤로가기 버튼 처리
+            history.pushState({ imageExpanded: true }, '', '');
+            
+            // 팝업 닫기 함수
+            function closePopup() {
+                if (document.body.contains(expandedDiv)) {
+                    document.body.removeChild(expandedDiv);
+                }
+                // popstate 이벤트 리스너 제거
+                window.removeEventListener('popstate', handlePopState);
+            }
+            
+            // popstate 이벤트 핸들러
+            function handlePopState(event) {
+                if (!event.state || !event.state.imageExpanded) {
+                    closePopup();
+                }
+            }
+            
+            // popstate 이벤트 리스너 추가
+            window.addEventListener('popstate', handlePopState);
+            
             // 이벤트 리스너 추가
             closeButton.addEventListener('click', () => {
-                document.body.removeChild(expandedDiv);
+                closePopup();
+                history.back();
             });
             
             prevButton.addEventListener('click', (e) => {
