@@ -1,0 +1,1171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+.template-app-wrapper {
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+.mcard-view {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    padding: 0;
+    margin: auto;
+    color: var(--text-color);
+    background: var(--primary-bg-color);
+    background-image: var(--primary-bg-image);
+    -ms-overflow-style: none;
+    line-height: 2rem;
+    font-family: var(--font-regular), serif;
+    letter-spacing: var(--font-regular-spacing);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .04);
+}
+
+.header {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: transparent;
+    padding: 0px;
+    position: relative;
+    overflow: hidden;  /* 추가 */
+}
+
+.header-content {
+    text-align: center;
+    width: 100%;
+    height: 100%;  /* 변경: 100vh -> 100% */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.names {
+    padding: 55px 0px 20px 0px;
+    margin-bottom: 0;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+}
+
+.name-row {
+    font-size: 18px;
+    color: #333;
+    letter-spacing: 5px;  /* 글자 간격 넓게 */
+    line-height: 2;  /* 줄 간격 조정 */
+}
+
+.title {
+    font-size: 32px;
+    color: #4a6741;  /* 초록색 계열 */
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;  /* light 굵기 */
+    margin-bottom: 30px;
+}
+
+.header-image {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    overflow: hidden;
+}
+
+.header-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.wedding-date-place {
+    margin-top: 30px;
+    line-height: 1.8;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;  /* light 굵기 */
+    margin-bottom: 50px;
+}
+
+.wedding-date {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.wedding-place {
+    font-size: 16px;
+    color: #666;
+}
+
+.wedding-info {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.wedding-info p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.date-time img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;  /* 이미지 비율 유지 */
+    image-rendering: -webkit-optimize-contrast;  /* 웹킷 브라우저에서 선명도 향상 */
+    image-rendering: crisp-edges;  /* 이미지 선명도 향상 */
+    transform: translateZ(0);  /* 하드웨어 가속 활성화 */
+    backface-visibility: hidden;  /* 렌더링 품질 향상 */
+    -webkit-font-smoothing: antialiased;  /* 텍스트 선명도 향상 */
+    filter: brightness(1.02) contrast(1.02);  /* 약간의 밝기와 대비 증가 */
+}
+
+.date-time {
+    background-color: transparent;
+    padding: 40px 0px 20px 0px;
+}
+
+.location {
+    margin: 20px 0;
+}
+
+.location p {
+    margin: 5px 0;
+}
+
+.map-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.gallery-section {
+    padding: 20px;
+    height: 440px;
+    background-color: #f8f8f8;
+}
+
+.gallery-header {
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    color: #131212;
+    margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+    .couple-names {
+        font-size: 24px;
+    }
+    
+    .wedding-info p {
+        font-size: 14px;
+    }
+}
+
+
+/* 꽃잎 스타일 */
+.petals-container {
+    position: absolute;
+    width: 100%;
+    height: 300vh; /* 화면 높이의 3배로 설정 (갤러리 섹션 전까지) */
+    overflow: hidden;
+    z-index: 3;
+    pointer-events: none;
+    perspective: 1000px;
+    top: 0;
+    left: 0;
+}
+
+/* 하트 터치 효과 */
+.touch-heart {
+    position: fixed;
+    font-size: 20px;
+    color: #ff6b8a;
+    pointer-events: none;
+    z-index: 1000;
+    user-select: none;
+    text-shadow: 0 0 10px rgba(255, 107, 138, 0.5);
+}
+
+@keyframes heartFloat {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1);
+    }
+    100% {
+        transform: translateY(-100px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.petal {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    filter: blur(0.2px);
+    will-change: transform;
+    transform-origin: center center;
+    transition: all 0.3s ease;
+}
+
+/* 챕터 2 */
+.greeting-section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.greeting-content {
+    flex: 1;  /* 남은 공간 차지 */
+    padding: 80px 20px 80px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.greeting-title {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    font-size: 24px;
+    color: #9b9999;
+    margin-bottom: 40px;
+    letter-spacing: 5px;
+    position: relative;
+    overflow: hidden;
+    opacity: 1;
+    min-height: 40px; /* 레이아웃 유지를 위한 최소 높이 */
+}
+
+/* 타이핑 효과를 위한 스타일 */
+.greeting-title.typing {
+    opacity: 1;
+}
+
+.greeting-title.typing::after {
+    content: '|';
+    color: #d4687a;
+    animation: blink 1s infinite;
+    margin-left: 3px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.greeting-text {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 2;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+
+
+
+
+.greeting-text p {
+    margin: 10px 0;
+}
+
+.parents-info {
+    margin-top: 20px;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.parent-row {
+    margin: 15px 0;
+    font-size: 15px;
+    color: #333;
+}
+
+.parent-title {
+    letter-spacing: 1px;
+}
+
+.parent-desc {
+    color: #666;
+    margin: 0px 10px 0px 2px;
+}
+
+.parent-name {
+    margin-left: 5px;
+    color: #333;
+}
+
+.greeting-image-wrapper {
+    width: 100%;
+    position: relative;
+    margin-top: auto;  /* 하단으로 밀기 */
+}
+
+.greeting-image-wrapper  img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image-line-overlay {
+    width: 90%;
+    margin: 20px auto;  /* 위아래 여백 추가 */
+    position: relative;
+}
+
+.line {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #666;  /* 선 색상을 텍스트 색상과 맞춤 */
+    opacity: 0.3;  /* 투명도 조정 */
+}
+
+@media (max-width: 768px) {
+    .greeting-image {
+        height: 300px;
+    }
+    
+    .image-line-overlay {
+        width: 80%;  /* 모바일에서 선 길이 조절 */
+    }
+}
+
+@media (max-width: 480px) {
+    .greeting-title {
+        font-size: 20px;
+    }
+    
+    .greeting-text {
+        font-size: 14px;
+    }
+    
+    .parent-row {
+        font-size: 14px;
+    }
+}
+
+/*웨딩 사진 슬라이드*/
+#weddingCarousel {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.gallery-grid {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+.gallery-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.gallery-row img {
+    width: calc(33.333% - 14px);
+    height: 250px;  /* 이미지 높이 고정 */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-row img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+/* 확대된 이미지를 위한 스타일 */
+.image-expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg, 
+        rgba(253, 241, 242, 0.95) 0%,
+        rgba(247, 242, 243, 0.95) 50%,
+        rgba(255, 244, 245, 0.856) 100%
+    );
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.expanded-image-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+}
+.expanded-image-container img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+/* 애니메이션 추가 */
+.expanded-image-container img {
+    animation: scaleIn 0.3s ease;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: rgb(77, 77, 77);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 10px;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 20px;
+    z-index: 1001;
+}
+
+.prev-button {
+    left: 20px;
+}
+
+.next-button {
+    right: 20px;
+}
+
+.close-button:hover,
+.nav-button:hover {
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* 모바일 대응 */ 
+@media (max-width: 768px) {
+    .gallery-row {
+        gap: 10px;
+        padding: 0 20px;
+    }
+    
+    .gallery-row img {
+        width: calc(33%);
+        height: 200px;
+    }
+
+    .gallery-header {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+}
+
+.carousel-item {
+    position: relative;
+    height: 600px;  /* 이미지 높이 고정 */
+}
+
+.carousel-item img {
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 인디케이터 스타일 커스텀 */
+.carousel-indicators [data-bs-target] {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(209, 209, 209, 0.7);
+    margin: 0 6px;
+}
+
+.carousel-indicators .active {
+    background-color: #1a1919;
+}
+
+/* 이전/다음 버튼 스타일 커스텀 */
+.carousel-control-prev,
+.carousel-control-next {
+    display: none;
+}
+
+#weddingCarousel:hover .carousel-control-prev,
+#weddingCarousel:hover .carousel-control-next {
+    opacity: 0.8;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 320px;
+    }
+}
+
+/* D-DAY 카운트다운 섹션 */
+.dday-section {
+    padding: 60px 20px;
+    background: #fafafa;
+    text-align: center;
+    position: relative;
+}
+
+.dday-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.dday-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #666;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.dday-counter {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+    background: white;
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.counter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.counter-number {
+    font-size: 32px;
+    font-weight: 300;
+    color: #333;
+    font-family: 'Noto Serif KR', serif;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.counter-label {
+    font-size: 12px;
+    color: #999;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-family: 'Noto Serif KR', serif;
+}
+
+.dday-message {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    color: #666;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+.dday-message p {
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .dday-section {
+        padding: 40px 20px;
+    }
+    
+    .dday-counter {
+        padding: 25px 15px;
+    }
+    
+    .counter-number {
+        font-size: 24px;
+    }
+    
+    .counter-label {
+        font-size: 11px;
+    }
+    
+    .dday-title {
+        font-size: 16px;
+    }
+    
+    .dday-message {
+        font-size: 13px;
+    }
+}
+
+/* 위치 섹션 */
+.location-section {
+    padding: 60px 20px 20px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #a77979;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.sub-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    color: #745b5bcb;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.venue-info {
+    margin-bottom: 30px;
+}
+
+.venue-name {
+    font-size: 18px;
+    color: #333;
+    font-family: 'Noto Serif KR', serif;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.venue-address {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    color: #666;
+}
+
+.map-container {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    max-width: 600px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;  /* 세로 방향으로 배치 */
+}
+
+#map {
+    width: 100%;
+    height: 350px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.map-container {
+    background: #f8f8f8;  /* 배경색을 약간 회색으로 변경 */
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 600px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+#map {
+    width: 100%;
+    height: 350px;
+}
+
+.transport-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.transport-icon {
+    font-size: 24px;
+}
+
+.transport-text {
+    text-align: left;
+}
+
+.transport-text h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.transport-text p {
+    font-size: 14px;
+    color: #666;
+}
+
+.transport-details {
+    margin: 50px 0px 0px 0px;
+}
+
+.transport-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.transport-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.transport-text {
+    flex: 1;
+}
+
+.transport-text h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.transport-text p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.notice-content {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.notice-content p {
+    margin-bottom: 15px;
+}
+
+.notice-content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .transport-item {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 18px;
+    }
+
+    .sub-title {
+        font-size: 20px;
+    }
+}
+
+/* 계좌이체 섹션 */
+.account-section {
+    padding: 40px 20px 40px 20px;
+    text-align: center;
+    background: #fff;
+}
+
+.section-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.account-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.account-button {
+    margin: 0 auto;
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: 'Noto Serif KR', serif;
+}
+
+.account-button:hover {
+    background-color: #e5e5e5;
+}
+
+/* 연락처 섹션 */
+.contact-section {
+    padding: 30px 50px;
+    background: #fff;
+}
+
+.contact-list {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;  /* 간격 증가 */
+}
+
+.contact-item {
+    display: flex;
+    justify-content: flex-start;  /* 왼쪽 정렬로 변경 */
+    align-items: center;
+    padding: 5px 0;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;  /* 간격 증가 */
+    flex: 1;  /* 남은 공간 차지 */
+}
+
+.contact-label {
+    font-family: 'Noto Serif KR', serif;
+    color: #999;  /* 색상 더 연하게 */
+    font-size: 15px;
+    min-width: 40px;
+}
+
+.contact-name {
+    font-family: 'Noto Serif KR', serif;
+    color: #333;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 20px;  /* 버튼 사이 간격 조정 */
+    margin-left: auto;  /* 오른쪽 정렬 */
+}
+
+.contact-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    text-decoration: none;
+}
+
+.contact-button i {
+    font-size: 20px;
+    color: #999;  /* 회색으로 변경 */
+}
+
+/* 공유 섹션 */
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #f1f1f1;
+    border: none;
+    margin: 10px auto;
+}
+
+.share-section {
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.share-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 11px;
+    border-radius: 20px;  /* 더 둥근 모서리 */
+    color: #333;
+}
+
+.share-button.kakao .share-icon {
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+}
+
+.share-button.url .share-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.share-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .share-buttons {
+        padding: 0 10px;
+    }
+}
+
+.footer {
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+}
+
+/* 애니메이션 관련 CSS 추가 */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    visibility: hidden;
+    transition: all 1s ease-out;
+    will-change: opacity, visibility, transform;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* 각 섹션별로 딜레이를 다르게 주고 싶다면 */
+.fade-in-section:nth-child(2) {
+    transition-delay: 0.2s;
+}
+.fade-in-section:nth-child(3) {
+    transition-delay: 0.3s;
+}
+.fade-in-section:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+/* 스크롤 다운 시 애니메이션 효과 */
+.fade-in-section.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.8s ease-out;
+}
+
+.music-controls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.music-controls-container {
+    width: 100%;
+    text-align: right;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+/* 웨이브 시각화 스타일 */
+.music-visualizer {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.music-visualizer.active {
+    opacity: 0.8;
+}
+
+.wave-bar {
+    width: 2px;
+    height: 4px;
+    background: linear-gradient(to top, #ff6b8a, #ff8fa3);
+    border-radius: 1px;
+    animation: wave-dance 0.8s ease-in-out infinite;
+    transform-origin: bottom;
+}
+
+.wave-bar:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.wave-bar:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.wave-bar:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.wave-bar:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.wave-bar:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+@keyframes wave-dance {
+    0%, 100% {
+        height: 4px;
+        opacity: 0.6;
+    }
+    25% {
+        height: 12px;
+        opacity: 1;
+    }
+    50% {
+        height: 8px;
+        opacity: 0.8;
+    }
+    75% {
+        height: 16px;
+        opacity: 1;
+    }
+}
+
+.music-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 0;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.music-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 107, 138, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.music-btn.playing::before {
+    width: 40px;
+    height: 40px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.1;
+    }
+}
+
+.music-btn svg {
+    fill: #666;
+    transition: fill 0.3s ease;
+}
+
+.music-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.music-btn:hover svg {
+    fill: #ff6b8a;
+}
+
+.music-btn.playing svg {
+    fill: #ff6b8a;
+}
+
+#pause-music {
+    display: none;
+}
