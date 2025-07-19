@@ -381,7 +381,7 @@ body {
 }
 .gallery-row {
     display: flex;
-    justify-content: center;
+    justify-content: first baseline;
     gap: 20px;
     width: 100%;
 }
@@ -508,6 +508,10 @@ body {
         font-size: 24px;
         margin-bottom: 20px;
     }
+}
+
+.carousel-inner {
+    height: 310px;
 }
 
 .carousel-item {
