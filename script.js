@@ -87,12 +87,23 @@ function initGallery() {
             expandedImg.src = galleryImages[currentImageIndex].src;
         });
         
-        // 스와이프 기능 추가
+        // 스와이프 기능 추가 및 줌 방지
         let touchStartX = 0;
         let touchEndX = 0;
         
         expandedDiv.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX;
+            // 멀티터치 줌 방지
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        });
+        
+        expandedDiv.addEventListener('touchmove', (e) => {
+            // 멀티터치 줌 방지
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
         });
         
         expandedDiv.addEventListener('touchend', (e) => {

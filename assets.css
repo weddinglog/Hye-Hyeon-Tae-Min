@@ -237,7 +237,7 @@ body {
 
 .greeting-content {
     flex: 1;  /* 남은 공간 차지 */
-    padding: 80px 20px 80px 20px;
+    padding: 80px 20px 40px 20px;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -395,7 +395,6 @@ body {
 }
 
 .gallery-row img:hover {
-    transform: scale(1.05);
     filter: brightness(1.1);
 }
 /* 확대된 이미지를 위한 스타일 */
@@ -417,6 +416,8 @@ body {
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.3s ease;
+    touch-action: manipulation;  /* 기본 터치 동작만 허용 (줌 방지) */
+    overflow: hidden;  /* 스크롤 방지 */
 }
 
 .expanded-image-container {
@@ -428,6 +429,11 @@ body {
     max-width: 100%;
     max-height: 90vh;
     object-fit: contain;
+    touch-action: none;  /* 터치 줌 방지 */
+    user-select: none;   /* 이미지 선택 방지 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 /* 애니메이션 추가 */
