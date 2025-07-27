@@ -989,6 +989,22 @@ body {
     }
 }
 
+/* 주차장 이미지 섹션 */
+.map-section {
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.map-section img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
 .footer {
     background-color: #f1f1f1;
     padding: 30px;
